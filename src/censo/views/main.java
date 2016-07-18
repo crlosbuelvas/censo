@@ -9,6 +9,14 @@ package censo.views;
  *
  * @author GESTIONSAS
  */
+
+import com.github.sarxos.webcam.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
 public class main extends javax.swing.JFrame {
 
     /**
@@ -16,6 +24,13 @@ public class main extends javax.swing.JFrame {
      */
     public main() {
         initComponents();
+        Webcam webcam = Webcam.getDefault();
+        webcam.open();
+        try {
+            ImageIO.write(webcam.getImage(), "PNG", new File("hello-world.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
