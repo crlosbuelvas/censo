@@ -13,7 +13,23 @@ package censo.controladores;
 import java.sql.*;
 
 public class Conexion {
+    
+    private Connection connect = null;
+    private Statement statement = null;
+    private PreparedStatement preparedStatement = null;
+    private ResultSet resultSet = null;
+
     public Conexion() {
+        try {
+        // This will load the MySQL driver, each DB has its own driver
+        Class.forName("com.mysql.jdbc.Driver");
+        // Setup the connection with the DB
+        connect = DriverManager.getConnection("jdbc:mysql://localhost/feedback?"
+              + "user=sqluser&password=sqluserpw");
         
+        } catch (Exception e) {
+        } finally {
+        }
+
     }
 }
