@@ -29,7 +29,7 @@ public class ModeloPoseedor {
     private String nom_pos;
     private String placa;
     
-    public void setIdPseedor(int id_posesdor){ this.id_poseedor = id_posesdor; }
+    public void setIdPoseedor(int id_posesdor){ this.id_poseedor = id_posesdor; }
     public void setTipoId(int tipo_id){ this.tipo_id = tipo_id; }
     public void setApe1Pos(String ape1_pos){ this.ape1_pos = ape1_pos.toUpperCase(); }
     public void setApe2Pos(String ape2_pos){ this.ape2_pos = ape2_pos.toUpperCase(); }
@@ -48,23 +48,23 @@ public class ModeloPoseedor {
     public void setNomPos(String nom_pos){ this.nom_pos = nom_pos.toUpperCase(); }
     public void setPlaca(String placa){ this.placa = placa.toUpperCase(); }
     
-    public int getIdPseedor(int id_posesdor){ return this.id_poseedor; }
-    public int getTipoId(int tipo_id){ return this.tipo_id; }
-    public String getApe1Pos(String ape1_pos){ return this.ape1_pos; }
-    public String getApe2Pos(String ape2_pos){ return this.ape2_pos; }
-    public String getDirPos(String dir_pos){ return this.dir_pos; }
-    public String getEstratoPos(String estrato_pos){ return this.estrato_pos; }
-    public String getCiudadPos(String ciudad_pos){ return this.ciudad_pos; }
-    public String getLicencia(String licencia){ return this.licencia; }
-    public String getSexoPos(String sexo_pos){ return this.sexo_pos; }
-    public String getNacimientoPos(String nacimiento_pos){ return this.nacimiento_pos; }
-    public String getPersonasCargo(String personas_cargo){ return this.personas_cargo; }
-    public String getNHijos(String n_hijos){ return this.n_hijos = n_hijos.toUpperCase(); }
-    public String getEstadoCivil(String estado_civil){ return this.estado_civil; }
-    public String getEscolaridadPos(String escolaridad_pos){ return this.escolaridad_pos; }
-    public String getProfecionPos(String profecion_pos){ return this.profecion_pos; }
-    public String getSaludPos(String salud_pos){ return this.salud_pos; }
-    public String getNomPos(String nom_pos){ return this.nom_pos; }
-    public String getPlaca(String placa){ return this.placa; }
+    public int getIdPoseedor(){ return this.id_poseedor; }
+    public int getTipoId(){ return this.tipo_id; }
+    public String getApe1Pos(){ return this.ape1_pos; }
+    public String getApe2Pos(){ return this.ape2_pos; }
+    public String getDirPos(){ return this.dir_pos; }
+    public String getEstratoPos(){ return this.estrato_pos; }
+    public String getCiudadPos(){ return this.ciudad_pos; }
+    public String getLicencia(){ return this.licencia; }
+    public String getSexoPos(){ return this.sexo_pos; }
+    public String getNacimientoPos(){ return this.nacimiento_pos; }
+    public String getPersonasCargo(){ return this.personas_cargo; }
+    public String getNHijos(){ return this.n_hijos = n_hijos.toUpperCase(); }
+    public String getEstadoCivil(){ return this.estado_civil; }
+    public String getEscolaridadPos(){ return this.escolaridad_pos; }
+    public String getProfecionPos(){ return this.profecion_pos; }
+    public String getSaludPos(){ return this.salud_pos; }
+    public String getNomPos(){ return this.nom_pos; }
+    public String getPlaca(){ return this.placa; }
     
 }
