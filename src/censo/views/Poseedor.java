@@ -9,12 +9,12 @@ package censo.views;
  *
  * @author GESTIONSAS
  */
-public class Propietario extends javax.swing.JPanel {
+public class Poseedor extends javax.swing.JPanel {
 
     /**
-     * Creates new form Propietario
+     * Creates new form Poseedor
      */
-    public Propietario() {
+    public Poseedor() {
         initComponents();
     }
 
@@ -27,63 +27,54 @@ public class Propietario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel14 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jTextField13 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jTextField14 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
-        jLabel14.setText("jLabel14");
-
-        jLabel16.setText("jLabel16");
-
-        jLabel19.setText("jLabel19");
-
-        jLabel17.setText("jLabel17");
-
-        jLabel11.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel11.setText("PROPIETARIO");
+        jLabel10.setText("Estado Civil");
 
         jLabel1.setText("Primer Apellido");
+
+        jLabel12.setText("Personas a Cargo");
 
         jLabel2.setText("Segundo Apellido");
 
         jLabel3.setText("Nombres");
+
+        jLabel13.setText("N°  de Hijos");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,13 +82,23 @@ public class Propietario extends javax.swing.JPanel {
             }
         });
 
+        jLabel15.setText("Licencia");
+
         jLabel4.setText("Direccion");
+
+        jLabel18.setText("Escolaridad");
 
         jLabel5.setText("Estrato");
 
+        jLabel20.setText("Profesion");
+
         jLabel6.setText("Ciudad");
 
+        jLabel21.setText("Salud");
+
         jLabel7.setText("N° De Identificacion");
+
+        jLabel22.setText("Tipo Id");
 
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
@@ -109,21 +110,8 @@ public class Propietario extends javax.swing.JPanel {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino", "Otro" }));
 
-        jLabel10.setText("Estado Civil");
-
-        jLabel12.setText("Personas a Cargo");
-
-        jLabel13.setText("N°  de Hijos");
-
-        jLabel15.setText("Licencia");
-
-        jLabel18.setText("Escolaridad");
-
-        jLabel20.setText("Profesion");
-
-        jLabel21.setText("Salud");
-
-        jLabel22.setText("Tipo Id");
+        jLabel11.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel11.setText("POSEEDORES");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -318,12 +306,8 @@ public class Propietario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
