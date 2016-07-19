@@ -10,5 +10,10 @@ package censo.modelos;
  * @author Admin
  */
 public class ModeloConductor {
-    
+    private int cod_conductor;
+    private String placa;
+    private int id_conductor;
+    private String ape1_con;
+    private String ape2_con;
+    private String nom_com;
 }
