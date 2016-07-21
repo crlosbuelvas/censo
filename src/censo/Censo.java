@@ -5,6 +5,8 @@
  */
 package censo;
 
+import censo.views.VentanaPrincipal;
+
 /**
  *
  * @author Admin
@@ -16,6 +18,7 @@ public class Censo {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        VentanaPrincipal v = new VentanaPrincipal();
     }
     
 }
