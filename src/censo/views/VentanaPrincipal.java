@@ -36,7 +36,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLayout(null);
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 0));
         setMaximumSize(new java.awt.Dimension(1300, 700));
         setMinimumSize(new java.awt.Dimension(1300, 700));
         setPreferredSize(new java.awt.Dimension(1300, 700));
@@ -59,9 +58,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         camara.setSize(camara.getSize().width, camara.getSize().height + 50);
         camara.setLocation(624, 10);
         
+        Conductor conductores = new Conductor();
+        conductores.setBounds(624, 240+60, 320, 240);
+        
         add(veiculo);
         add(propietario);
         add(camara);
+        add(conductores);
         
         setVisible(true);
     }
