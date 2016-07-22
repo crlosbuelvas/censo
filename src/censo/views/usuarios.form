@@ -38,6 +38,7 @@
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jButton1" pref="131" max="32767" attributes="0"/>
                   <Component id="cod_id" max="32767" attributes="0"/>
                   <Component id="nom_usuario" max="32767" attributes="0"/>
                   <Component id="ape1_usuario" max="32767" attributes="0"/>
@@ -46,7 +47,7 @@
                   <Component id="tel_usuario" max="32767" attributes="0"/>
                   <Component id="mail_usuario" max="32767" attributes="0"/>
                   <Component id="cod_perfil" max="32767" attributes="0"/>
-                  <Component id="contrasena_usuario" min="-2" pref="131" max="-2" attributes="0"/>
+                  <Component id="contrasena_usuario" pref="131" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
@@ -102,7 +103,9 @@
                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   <Component id="contrasena_usuario" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -181,6 +184,11 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JPasswordField" name="contrasena_usuario">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registrar"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

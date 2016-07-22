@@ -6,14 +6,18 @@
 package censo.views;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.SwingConstants;
 
 /**
  *
  * @author GESTIONSAS
  */
 
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class VentanaPrincipal extends javax.swing.JFrame implements ActionListener {
 
     /**
      * Creates new form main
@@ -47,16 +51,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         setLocation(x, y);
         
+        Menu = new javax.swing.JMenu();
+        Camara = new javax.swing.JMenu();
         MenuBar = new javax.swing.JMenuBar();
-        Menu1 = new javax.swing.JMenu();
-        Menu2 = new javax.swing.JMenu();
+        Buscar = new javax.swing.JMenuItem();
+        Registrar = new javax.swing.JMenuItem();
         rc = new RompeCabezas(this);
         
-        Menu1.setText("File");
-        MenuBar.add(Menu1);
+        Menu.setText("Menu");
+        
+        Buscar.setText("Buscar");
+        Menu.add(Buscar);
 
-        Menu2.setText("Edit");
-        MenuBar.add(Menu2);
+        Camara.setText("Camara");
+        Menu.add(Camara);
+        
+        Registrar.setText("Registrar");
+        Registrar.addActionListener(this);
+        Menu.add(Registrar);
+        
+        MenuBar.add(Menu);
         
         add(MenuBar, BorderLayout.NORTH);
         add(rc, BorderLayout.CENTER);
@@ -92,13 +106,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    RompeCabezas rc;
-    private javax.swing.JMenu Menu1;
-    private javax.swing.JMenu Menu2;
+    private RompeCabezas rc;
+    private javax.swing.JMenu Camara;
+    private javax.swing.JMenu Menu;
+    private javax.swing.JMenuItem Buscar;
+    private javax.swing.JMenuItem Registrar;
     private javax.swing.JMenuBar MenuBar;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object EV = e.getSource();
+        
+        if(EV == (Object)Registrar){
+            VentanaRegistro v = new VentanaRegistro(this);
+        }
+    }
 }

@@ -69,7 +69,7 @@ public class Camara extends JPanel implements Runnable, ActionListener {
                 repaint();
             }
             try {
-                    Thread.sleep(100);
+                    Thread.sleep(1);
             } catch (InterruptedException e) {
                     return;
             }
@@ -89,7 +89,6 @@ public class Camara extends JPanel implements Runnable, ActionListener {
             imgsusses = true;
             w.close();
         }else if(B == reiniciar){
-            w = Webcam.getDefault();
             w.open(true);
             imgsusses = false;
         }

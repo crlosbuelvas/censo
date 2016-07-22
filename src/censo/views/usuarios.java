@@ -14,7 +14,7 @@ public class usuarios extends javax.swing.JPanel {
     /**
      * Creates new form usuarios
      */
-    public usuarios() {
+    public usuarios(VentanaRegistro vr) {
         initComponents();
     }
 
@@ -46,6 +46,7 @@ public class usuarios extends javax.swing.JPanel {
         mail_usuario = new javax.swing.JTextField();
         cod_perfil = new javax.swing.JComboBox<>();
         contrasena_usuario = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
 
@@ -69,6 +70,8 @@ public class usuarios extends javax.swing.JPanel {
 
         cod_perfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Usuario" }));
 
+        jButton1.setText("Registrar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,15 +90,17 @@ public class usuarios extends javax.swing.JPanel {
                     .addComponent(jLabel10))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cod_id)
-                    .addComponent(nom_usuario)
-                    .addComponent(ape1_usuario)
-                    .addComponent(ape2_usuario)
-                    .addComponent(dir_usuario)
-                    .addComponent(tel_usuario)
-                    .addComponent(mail_usuario)
-                    .addComponent(cod_perfil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(contrasena_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cod_id)
+                        .addComponent(nom_usuario)
+                        .addComponent(ape1_usuario)
+                        .addComponent(ape2_usuario)
+                        .addComponent(dir_usuario)
+                        .addComponent(tel_usuario)
+                        .addComponent(mail_usuario)
+                        .addComponent(cod_perfil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(contrasena_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,7 +143,9 @@ public class usuarios extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10)
                     .addComponent(contrasena_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -150,6 +157,7 @@ public class usuarios extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cod_perfil;
     private javax.swing.JPasswordField contrasena_usuario;
     private javax.swing.JTextField dir_usuario;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
