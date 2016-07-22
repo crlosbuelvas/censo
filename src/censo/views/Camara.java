@@ -16,20 +16,24 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import com.github.sarxos.webcam.Webcam;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 
-public class Camara extends JPanel implements Runnable{
+public class Camara extends JPanel implements Runnable, ActionListener {
     
-    BufferedImage img;
-    Webcam w;
+    private BufferedImage img;
+    private boolean imgsusses;
+    private Webcam w;
     
-    JButton tomar_foto;
-    JButton reiniciar;
+    private JButton tomar_foto;
+    private JButton reiniciar;
     
     private final Dimension size;
     
     public Camara() {
+        imgsusses = false;
         
         w = Webcam.getDefault();
         w.setViewSize(new Dimension(320,240));
@@ -49,6 +53,9 @@ public class Camara extends JPanel implements Runnable{
         reiniciar = new JButton("Reiniciar");
         reiniciar.setBounds(170, 250, 100, 30);
         
+        tomar_foto.addActionListener(this);
+        reiniciar.addActionListener(this);
+        
         add(tomar_foto);
         add(reiniciar);
         
@@ -57,8 +64,10 @@ public class Camara extends JPanel implements Runnable{
     @Override
     public void run() {
         while(true) {
-            img = w.getImage();
-            repaint();
+            if(!imgsusses){
+                img = w.getImage();
+                repaint();
+            }
             try {
                     Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -71,5 +80,18 @@ public class Camara extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.drawImage(img, 0, 0, 320, 240, null);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton B = (JButton) e.getSource();
+        if(B == tomar_foto){
+            imgsusses = true;
+            w.close();
+        }else if(B == reiniciar){
+            w = Webcam.getDefault();
+            w.open(true);
+            imgsusses = false;
+        }
     }
 }

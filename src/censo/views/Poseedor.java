@@ -27,6 +27,7 @@ public class Poseedor extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        licencia = new javax.swing.ButtonGroup();
         jLabel9 = new javax.swing.JLabel();
         sexo_pro = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -101,8 +102,10 @@ public class Poseedor extends javax.swing.JPanel {
 
         jLabel6.setText("Ciudad");
 
+        licencia.add(jRadioButton1);
         jRadioButton1.setText("si");
 
+        licencia.add(jRadioButton2);
         jRadioButton2.setText("no");
 
         jLabel7.setText("N° De Identificacion");
@@ -288,6 +291,7 @@ public class Poseedor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.ButtonGroup licencia;
     private javax.swing.JTextField n_hijos;
     private javax.swing.JFormattedTextField nacimiento_pro;
     private javax.swing.JTextField nom_pro;

@@ -31,6 +31,7 @@ public class Propietario extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        licencia = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -121,8 +122,10 @@ public class Propietario extends javax.swing.JPanel {
 
         jLabel22.setText("Tipo Id");
 
+        licencia.add(jRadioButton1);
         jRadioButton1.setText("si");
 
+        licencia.add(jRadioButton2);
         jRadioButton2.setText("no");
 
         salud_pro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Subsidiado", "contributivo" }));
@@ -262,7 +265,8 @@ public class Propietario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(escolaridad_pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profecion_pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(salud_pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(salud_pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -303,6 +307,7 @@ public class Propietario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.ButtonGroup licencia;
     private javax.swing.JTextField n_hijos;
     private javax.swing.JFormattedTextField nacimiento_pro;
     private javax.swing.JTextField nom_pro;
