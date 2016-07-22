@@ -12,12 +12,12 @@ import javax.swing.JFrame;
  *
  * @author Admin
  */
-public class VentanaRegistro extends javax.swing.JDialog {
+public class VentanaBuscar extends javax.swing.JDialog {
 
     /**
-     * Creates new form VentanaRegistro
+     * Creates new form VentanaBuscar
      */
-    public VentanaRegistro(JFrame v) {
+    public VentanaBuscar(JFrame v) {
         super(v,true);
         
         try {
@@ -35,10 +35,10 @@ public class VentanaRegistro extends javax.swing.JDialog {
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("Registro");
-        usuarios usu = new usuarios(this);
-        usu.setBounds(0, 0, 320, 410);
+        Buscador bus = new Buscador();
+        bus.setBounds(0, 0, 410, 100);
         
-        setSize(usu.getSize().width, usu.getSize().height + 10);
+        setSize(bus.getSize().width, bus.getSize().height + 10);
         
         Toolkit conf = Toolkit.getDefaultToolkit();
         
@@ -49,7 +49,7 @@ public class VentanaRegistro extends javax.swing.JDialog {
         
         setResizable(false);
         
-        add(usu);
+        add(bus);
         
         setVisible(true);
     }

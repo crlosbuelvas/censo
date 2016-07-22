@@ -6,11 +6,9 @@
 package censo.views;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.SwingConstants;
 
 /**
  *
@@ -61,6 +59,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
         Menu.setText("Menu");
         
         Buscar.setText("Buscar");
+        Buscar.addActionListener(this);
         Menu.add(Buscar);
 
         Camara.setText("Camara");
@@ -124,6 +123,10 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
         
         if(EV == (Object)Registrar){
             VentanaRegistro v = new VentanaRegistro(this);
+        }
+        if(EV == (Object)Buscar){
+            //VentanaBuscar v = new VentanaBuscar(this);
+            setVisible(false);
         }
     }
 }
