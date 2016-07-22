@@ -5,10 +5,8 @@
  */
 package censo.views;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.BorderLayout;
 import java.awt.Toolkit;
-import javax.swing.JTabbedPane;
 
 /**
  *
@@ -34,12 +32,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
-        setLayout(null);
+        setLayout(new BorderLayout());
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 700));
-        setMinimumSize(new java.awt.Dimension(1000, 700));
-        setSize(new java.awt.Dimension(1000, 700));
+        setMaximumSize(new java.awt.Dimension(1000, 720));
+        setMinimumSize(new java.awt.Dimension(1000, 720));
+        setSize(new java.awt.Dimension(1000, 720));
         setResizable(false);
         
         Toolkit conf = Toolkit.getDefaultToolkit();
@@ -49,27 +47,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         setLocation(x, y);
         
-        veiculo = new Vehiculos();
-        propietario = new Propietario();
-        camara = new Camara();
-        conductores = new Conductor();
-        mandos = new Mandos();
-        POS_PRO = new JTabbedPane();
+        MenuBar = new javax.swing.JMenuBar();
+        Menu1 = new javax.swing.JMenu();
+        Menu2 = new javax.swing.JMenu();
+        rc = new RompeCabezas(this);
         
-        camara.setLocation((getSize().width-320)-20, 10);
-        camara.setSize(320, 240 + 50);
-        veiculo.setBounds(10, 10, camara.getLocation().x - 20, 414);
-        propietario.setBounds(10, 434, camara.getLocation().x - 20, 280);
-        conductores.setBounds(camara.getLocation().x, 10 + (camara.getSize().height+10), camara.getSize().width, 180);
-        mandos.setBounds(camara.getLocation().x,
-                10 + (camara.getSize().height+10) + (conductores.getSize().height + 10),
-                camara.getSize().width, 100);
+        Menu1.setText("File");
+        MenuBar.add(Menu1);
+
+        Menu2.setText("Edit");
+        MenuBar.add(Menu2);
         
-        add(veiculo);
-        add(propietario);
-        add(camara);
-        add(conductores);
-        add(mandos);
+        add(MenuBar, BorderLayout.NORTH);
+        add(rc, BorderLayout.CENTER);
         
         setVisible(true);
     }
@@ -82,9 +72,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -92,62 +82,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1300, 700));
         setResizable(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 95, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 72, Short.MAX_VALUE)
-        );
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 95, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 72, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab2", jPanel2);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1190, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(589, Short.MAX_VALUE))
-        );
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private Vehiculos veiculo;
-    private Propietario propietario;
-    private Camara camara;
-    private Conductor conductores;
-    private Mandos mandos;
-    private JTabbedPane POS_PRO;
-    
+    RompeCabezas rc;
+    private javax.swing.JMenu Menu1;
+    private javax.swing.JMenu Menu2;
+    private javax.swing.JMenuBar MenuBar;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
