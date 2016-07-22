@@ -32,7 +32,7 @@ public class Camara extends JPanel implements Runnable{
     public Camara() {
         
         w = Webcam.getDefault();
-        w.setViewSize(new Dimension(320, 240));
+        w.setViewSize(new Dimension(320,240));
         w.open(true);
         img = w.getImage();
         

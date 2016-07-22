@@ -49,12 +49,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         setLocation(x, y);
         
-        Vehiculos veiculo = new Vehiculos();
-        Propietario propietario = new Propietario();
-        Camara camara = new Camara();
-        Conductor conductores = new Conductor();
-        Mandos mandos = new Mandos();
-        JTabbedPane POS_PRO = new JTabbedPane();
+        veiculo = new Vehiculos();
+        propietario = new Propietario();
+        camara = new Camara();
+        conductores = new Conductor();
+        mandos = new Mandos();
+        POS_PRO = new JTabbedPane();
         
         camara.setLocation((getSize().width-camara.getSize().width)-20, 10);
         camara.setSize(camara.getSize().width, camara.getSize().height + 50);
@@ -138,7 +138,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private Vehiculos veiculo;
+    private Propietario propietario;
+    private Camara camara;
+    private Conductor conductores;
+    private Mandos mandos;
+    private JTabbedPane POS_PRO;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
