@@ -125,8 +125,8 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
             VentanaRegistro v = new VentanaRegistro(this);
         }
         if(EV == (Object)Buscar){
-            //VentanaBuscar v = new VentanaBuscar(this);
-            setVisible(false);
+            VentanaBuscar v = new VentanaBuscar(this);
+            
         }
     }
 }
