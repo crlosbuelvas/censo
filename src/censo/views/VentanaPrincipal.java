@@ -56,8 +56,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mandos = new Mandos();
         POS_PRO = new JTabbedPane();
         
-        camara.setLocation((getSize().width-camara.getSize().width)-20, 10);
-        camara.setSize(camara.getSize().width, camara.getSize().height + 50);
+        camara.setLocation((getSize().width-320)-20, 10);
+        camara.setSize(320, 240 + 50);
         veiculo.setBounds(10, 10, camara.getLocation().x - 20, 414);
         propietario.setBounds(10, 434, camara.getLocation().x - 20, 280);
         conductores.setBounds(camara.getLocation().x, 10 + (camara.getSize().height+10), camara.getSize().width, 180);
@@ -90,7 +90,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setMaximumSize(new java.awt.Dimension(1300, 700));
         setMinimumSize(new java.awt.Dimension(1300, 700));
-        setPreferredSize(new java.awt.Dimension(1300, 700));
         setResizable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
