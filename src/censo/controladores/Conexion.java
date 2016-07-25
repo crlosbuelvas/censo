@@ -22,9 +22,9 @@ public class Conexion {
 
     public Conexion() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
             //1. crear conexion
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/suin", "root", "");
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Censo","postgres","1234");
             //2. crear objeto statement
             statement = con.createStatement();
         } catch (Exception e1) {
