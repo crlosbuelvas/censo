@@ -5,6 +5,7 @@
  */
 package censo;
 
+import censo.views.VentanaLogin;
 import censo.views.VentanaPrincipal;
 
 /**
@@ -18,7 +19,7 @@ public class Censo {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        VentanaPrincipal v = new VentanaPrincipal();
+        VentanaLogin l = new VentanaLogin();
     }
     
 }

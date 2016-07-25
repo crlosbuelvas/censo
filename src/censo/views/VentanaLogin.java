@@ -5,6 +5,8 @@
  */
 package censo.views;
 
+import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
@@ -17,8 +19,25 @@ public class VentanaLogin extends javax.swing.JFrame {
      * Creates new form VentanaLogin
      */
     public VentanaLogin() {
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLayout(new FlowLayout());
+        setTitle("Login");
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        login l = new login(this);
+        
+        setSize(300,200);
+        
+        Toolkit conf = Toolkit.getDefaultToolkit();
+        
+        int x = (conf.getScreenSize().width/2) - (getSize().width/2);
+        int y = (conf.getScreenSize().height/2) - (getSize().height/2);
+        
+        setLocation(x, y);
+        
+        add(l);
+        
+        setVisible(true);
     }
 
     /**

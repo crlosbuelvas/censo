@@ -21,6 +21,19 @@ public class ModeloUsuario {
     private int cod_perfil;
     private String contrasena_usuario;
     
+    public ModeloUsuario(){
+        id_usuario = 0;
+        cod_id = 0;
+        ape1_usuario = "";
+        ape2_usuario = "";
+        nom_usuario = "";
+        dir_usuario = "";
+        tel_usuario = 0;
+        mail_usuario = "";
+        cod_perfil = 0;
+        contrasena_usuario = "";
+    }
+    
     public void setIdUsuario(int id_usuario){ this.id_usuario = id_usuario; }
     public void setCodId(int cod_id){ this.cod_id = cod_id; }
     public void setApe1Usuario(String ape1_usuario){ this.ape1_usuario = ape1_usuario.toUpperCase(); }

@@ -15,36 +15,46 @@ import java.sql.*;
 public class Conexion {
     
     private Connection con = null;
-    private Statement statement = null;
-    private PreparedStatement preparedStatement = null;
-    private ResultSet resultSet = null;
     private boolean ConnectionFail = false;
 
-    public Conexion() {
+    public boolean CrearConexion() {
         try {
+            //0. driver a utilizar
             Class.forName("org.postgresql.Driver");
             //1. crear conexion
             con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Censo","postgres","1234");
-            //2. crear objeto statement
-            statement = con.createStatement();
+            if(con!=null){
+                return true;
+            }
         } catch (Exception e1) {
             //3. si la conexion falla intentamos en otra base temporal y modificamos
             //   una variable que nos dira del fallo
             ConnectionFail = true;
             if(javax.swing.JOptionPane.showConfirmDialog(null, "", "Alerta!", javax.swing.JOptionPane.YES_NO_OPTION) == 0){
-                ConexionLocal();
+                return ConexionLocal();
             }
         }
+        return false;
     }
     
-    private void ConexionLocal(){
+    private boolean ConexionLocal(){
         try {
+            //0. driver a utilizar
             Class.forName("org.sqlite.JDBC");
+            //1. crear conexion local
             con = DriverManager.getConnection("jdbc:sqlite:temp.db");
-            statement = con.createStatement();
+            if(con!=null){
+                return true;
+            }
         }catch(ClassNotFoundException | SQLException e2){
+            //3. si la conexion local falla el programa deve detenerse
             e2.printStackTrace();
             System.exit(1);
         }
+        return false;
+    }
+    
+    public Connection getConexion(){
+        return con;
     }
 }
