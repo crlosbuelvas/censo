@@ -40,7 +40,7 @@ public class Camara extends JPanel implements Runnable, ActionListener {
         w.open(true);
         img = w.getImage();
         
-        this.size = new Dimension(img.getWidth(), img.getHeight());
+        this.size = new Dimension(224, 224);
         setSize(this.size);
         
         Thread tc = new Thread(this);
@@ -49,9 +49,9 @@ public class Camara extends JPanel implements Runnable, ActionListener {
         setLayout(null);
         
         tomar_foto = new JButton("Foto");
-        tomar_foto.setBounds(50, 250, 100 , 30);
+        tomar_foto.setBounds(0, 188, 100 , 30);
         reiniciar = new JButton("Reiniciar");
-        reiniciar.setBounds(170, 250, 100, 30);
+        reiniciar.setBounds(120, 188, 100, 30);
         
         tomar_foto.addActionListener(this);
         reiniciar.addActionListener(this);
@@ -79,7 +79,7 @@ public class Camara extends JPanel implements Runnable, ActionListener {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(img, 0, 0, 320, 240, null);
+        g.drawImage(img, 0, 0, 224, 185, null);
     }
 
     @Override
