@@ -5,6 +5,8 @@
  */
 package censo.views;
 
+import java.awt.Toolkit;
+
 /**
  *
  * @author Admin
@@ -29,9 +31,16 @@ public class VentanaRegistroFoto extends javax.swing.JFrame {
         
         setLayout(null);
         setTitle("Registro Inicial");
-        setSize(370, 400);
+        setSize(370, 380);
         setResizable(false);
         setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        
+        Toolkit conf = Toolkit.getDefaultToolkit();
+        
+        int x = (conf.getScreenSize().width/2) - (getSize().width/2);
+        int y = (conf.getScreenSize().height/2) - (getSize().height/2);
+        
+        setLocation(x, y);
         
         rf = new RegistroFoto();
         rf.setBounds(0, 0, 363, 350);

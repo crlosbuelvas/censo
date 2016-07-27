@@ -5,6 +5,17 @@
  */
 package censo.views;
 
+import censo.controladores.ControladorCenso;
+import censo.controladores.ControladorImagen;
+import censo.controladores.ControladorPoseedor;
+import censo.controladores.ControladorPropietario;
+import censo.modelos.ModeloCenso;
+import censo.modelos.ModeloImagen;
+import censo.modelos.ModeloPoseedor;
+import censo.modelos.ModeloPropietario;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author GESTIONSAS
@@ -15,14 +26,21 @@ public class RegistroFoto extends javax.swing.JPanel {
      * Creates new form Inicial
      */
     public RegistroFoto() {
+        //inicializamos los componentes del panel
         initComponents();
+        
+        //creamos la camara y le damos tamaño y posicion
         camara = new Camara();
         camara.setLocation(5, 5);
         camara.setSize(224, 224);
         
-        PanelCamara.add(camara);
+        SelectCenso();
         
-        setVisible(true);
+        ActualizaFecha();
+        
+        PanelCamara.add(camara);//agregamos la camara al panel en donde ira
+        
+        setVisible(true);//acemos que todos los elemtos sean vicibles
     }
 
     /**
@@ -41,14 +59,14 @@ public class RegistroFoto extends javax.swing.JPanel {
         nom_pro = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        id_propietario = new javax.swing.JFormattedTextField();
+        tipo_id = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tipo_de_documento = new javax.swing.JComboBox<>();
         PanelCamara = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        tipo_de_persona = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         fecha_censo = new javax.swing.JLabel();
         n_censo = new javax.swing.JLabel();
@@ -67,7 +85,7 @@ public class RegistroFoto extends javax.swing.JPanel {
 
         jLabel7.setText("N° De Identificacion");
 
-        id_propietario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        tipo_id.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         jLabel3.setText("Primer Apellido");
 
@@ -75,7 +93,7 @@ public class RegistroFoto extends javax.swing.JPanel {
 
         jLabel5.setText("Nombres");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C.C", "T.I", "Contraseña", "Cedula Extrangera", "Libreta Militar" }));
+        tipo_de_documento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C.C", "T.I", "Contraseña", "Cedula Extrangera", "Libreta Militar" }));
 
         javax.swing.GroupLayout PanelCamaraLayout = new javax.swing.GroupLayout(PanelCamara);
         PanelCamara.setLayout(PanelCamaraLayout);
@@ -88,9 +106,14 @@ public class RegistroFoto extends javax.swing.JPanel {
             .addGap(0, 224, Short.MAX_VALUE)
         );
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Propietario", "Poseedor" }));
+        tipo_de_persona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Propietario", "Poseedor" }));
 
         jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         fecha_censo.setText("yyyy-mm-dd");
 
@@ -117,8 +140,8 @@ public class RegistroFoto extends javax.swing.JPanel {
                             .addComponent(jLabel7)
                             .addComponent(jLabel3)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-                                .addComponent(id_propietario, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tipo_de_documento, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+                                .addComponent(tipo_id, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(ape1_pro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addComponent(PanelCamara, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -133,7 +156,7 @@ public class RegistroFoto extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(fecha_censo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tipo_de_persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -146,7 +169,7 @@ public class RegistroFoto extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipo_de_persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fecha_censo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,11 +178,11 @@ public class RegistroFoto extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tipo_de_documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
                         .addGap(6, 6, 6)
-                        .addComponent(id_propietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tipo_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addGap(6, 6, 6)
@@ -178,10 +201,95 @@ public class RegistroFoto extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void ActualizaFecha(){
+        //obtenemos fecha del equipo
+        Calendar calendario = Calendar.getInstance();
+        //mostrammos la fecha
+        fecha_censo.setText(String.valueOf(calendario.get(Calendar.YEAR)) + "-" +
+                String.valueOf(calendario.get(Calendar.MONTH)) + "-" +
+                String.valueOf(calendario.get(Calendar.DAY_OF_MONTH)));
+    }
+    
+    public void SelectCenso(){
+        //las sigientes tres lineas nos diran el ultimo numero de censo ingresado
+        ModeloCenso MC = new ModeloCenso();
+        ControladorCenso CC = new ControladorCenso(MC);
+        MC = CC.Select("SelectUltimo");
+        
+        //colocamos el numero de censo en pantalla
+        n_censo.setText(String.valueOf(MC.getNCenso()+1));
+    }
+    
+    public void Borrar(){
+        ape1_pro.setText("");
+        ape2_pro.setText("");
+        nom_pro.setText("");
+        tipo_id.setText("");
+    }
+    
     private void ape1_proActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ape1_proActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ape1_proActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try{
+            Integer.parseInt(tipo_id.getText());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "N° de documento no valido", "¡¡¡ERROR!!!", JOptionPane.ERROR_MESSAGE);
+            tipo_id.setText("");
+        }
+        if(!ape1_pro.getText().equals("") &
+                !ape2_pro.getText().equals("") &&
+                !nom_pro.getText().equals("") &&
+                !String.valueOf(tipo_de_documento.getSelectedItem()).equals("") &&
+                !tipo_id.getText().equals("")){
+            
+            ModeloCenso MC = new ModeloCenso();
+            MC.setNCenso(Integer.parseInt(n_censo.getText()));
+            
+            ControladorCenso CC = new ControladorCenso(MC);
+            CC.InsertarActualizar("InsertInicial");
+            
+            ModeloImagen MI = new ModeloImagen();
+            MI.setIdImagen(Integer.parseInt(n_censo.getText()));
+            MI.setNombre(nom_pro.getText() + " " + ape1_pro.getText() + " " + ape2_pro.getText());
+            MI.setImagen(camara.GetImagenBytea());
+            
+            ControladorImagen CI = new ControladorImagen(MI);
+            CI.InsertarActualizar("InsertInicial");
+            
+            if(tipo_de_persona.getSelectedIndex() == 0){
+                ModeloPropietario MP = new ModeloPropietario();
+                MP.setIdPropietario(Integer.parseInt(n_censo.getText()));
+                MP.setApe1Pro(ape1_pro.getText());
+                MP.setApe2Pro(ape2_pro.getText());
+                MP.setNomPro(nom_pro.getText());
+                MP.setTipoDocumento(String.valueOf(tipo_de_documento.getSelectedItem()));
+                MP.setTipoId(Integer.parseInt(tipo_id.getText()));
+                
+                ControladorPropietario CP = new ControladorPropietario(MP);
+                CP.InsertarActualizar("InsertInicial");
+                
+            }else if(tipo_de_persona.getSelectedIndex() == 1){
+                ModeloPoseedor MP = new ModeloPoseedor();
+                MP.setIdPoseedor(Integer.parseInt(n_censo.getText()));
+                MP.setApe1Pos(ape1_pro.getText());
+                MP.setApe2Pos(ape2_pro.getText());
+                MP.setNomPos(nom_pro.getText());
+                MP.setTipoDocumento(String.valueOf(tipo_de_documento.getSelectedItem()));
+                MP.setTipoId(Integer.parseInt(tipo_id.getText()));
+                
+                ControladorPoseedor CP = new ControladorPoseedor(MP);
+                CP.InsertarActualizar("InsertInicial");
+                
+            }
+        }
+        Borrar();
+        SelectCenso();
+        ActualizaFecha();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private Camara camara;
     
@@ -190,10 +298,7 @@ public class RegistroFoto extends javax.swing.JPanel {
     private javax.swing.JTextField ape1_pro;
     private javax.swing.JTextField ape2_pro;
     private javax.swing.JLabel fecha_censo;
-    private javax.swing.JFormattedTextField id_propietario;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
@@ -204,5 +309,8 @@ public class RegistroFoto extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel n_censo;
     private javax.swing.JTextField nom_pro;
+    private javax.swing.JComboBox<String> tipo_de_documento;
+    private javax.swing.JComboBox<String> tipo_de_persona;
+    private javax.swing.JFormattedTextField tipo_id;
     // End of variables declaration//GEN-END:variables
 }

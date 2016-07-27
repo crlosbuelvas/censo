@@ -19,6 +19,8 @@ public class Censo {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        //llamamos a la primera ventana (el login)
         VentanaLogin l = new VentanaLogin();
     }
     

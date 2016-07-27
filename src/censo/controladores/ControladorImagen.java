@@ -5,7 +5,7 @@
  */
 package censo.controladores;
 
-import censo.modelos.ModeloCenso;
+import censo.modelos.ModeloImagen;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,16 +15,15 @@ import java.sql.SQLException;
  *
  * @author Admin
  */
-public class ControladorCenso {
-    
+public class ControladorImagen {
     private Connection con = null;
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
     
-    ModeloCenso MC = null;
+    ModeloImagen MI = null;
     
-    public ControladorCenso(ModeloCenso MC){
-        this.MC = MC;
+    public ControladorImagen(ModeloImagen MI){
+        this.MI = MI;
         
         Conexion c = new Conexion();
         
@@ -33,32 +32,13 @@ public class ControladorCenso {
         }
     }
     
-    public ModeloCenso Select(String consulta){
-        if(consulta.equals("SelectUltimo")){
-            try{
-                preparedStatement = con.prepareStatement("SELECT * FROM public.censo ORDER BY n_censo DESC LIMIT 1;");
-                resultSet = preparedStatement.executeQuery();
-                while(resultSet.next()){
-                    MC.setNCenso(resultSet.getInt("n_censo"));
-                }
-                resultSet.close();
-                preparedStatement.close();
-                con.close();
-                
-                return MC;
-            }catch(SQLException e){
-                System.err.println("error en SelectUltimo");
-            }
-            
-        }
-        return null;
-    }
-    
     public int InsertarActualizar(String consulta){
         if(consulta.equals("InsertInicial")){
             try{
-                preparedStatement = con.prepareStatement("INSERT INTO public.censo(n_censo, fecha_alta) VALUES (? , current_date);");
-                preparedStatement.setInt(1, MC.getNCenso());
+                preparedStatement = con.prepareStatement("INSERT INTO public.propietario_imagen(id_imagen, nombre, imagen) VALUES (?, ?, ?);");
+                preparedStatement.setInt(1, MI.getIdImagen());
+                preparedStatement.setString(2, MI.getNombre());
+                preparedStatement.setBytes(3, MI.getImagenBytea());
                 
                 int r = preparedStatement.executeUpdate();
                 
@@ -67,6 +47,7 @@ public class ControladorCenso {
                 
                 return r;
             }catch(SQLException e){
+                e.printStackTrace();
                 System.err.println("error: " + e.getMessage());
             }
             

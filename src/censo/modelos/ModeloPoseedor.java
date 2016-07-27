@@ -21,13 +21,36 @@ public class ModeloPoseedor {
     private String sexo_pos;
     private String nacimiento_pos;
     private String personas_cargo;
-    private String n_hijos;
+    private int n_hijos;
     private String estado_civil;
     private String escolaridad_pos;
     private String profecion_pos;
     private String salud_pos;
     private String nom_pos;
     private String placa;
+    private String tipo_documento;
+    
+    public ModeloPoseedor(){
+        id_poseedor = 0;
+        tipo_id = 0;
+        ape1_pos = "";
+        ape2_pos = "";
+        dir_pos = "";
+        estrato_pos = "";
+        ciudad_pos = "";
+        licencia = "";
+        sexo_pos = "";
+        nacimiento_pos = "";
+        personas_cargo = "";
+        n_hijos = 0;
+        estado_civil = "";
+        escolaridad_pos = "";
+        profecion_pos = "";
+        salud_pos = "";
+        nom_pos = "";
+        placa = "";
+        tipo_documento = "";
+    }
     
     public void setIdPoseedor(int id_posesdor){ this.id_poseedor = id_posesdor; }
     public void setTipoId(int tipo_id){ this.tipo_id = tipo_id; }
@@ -40,13 +63,14 @@ public class ModeloPoseedor {
     public void setSexoPos(String sexo_pos){ this.sexo_pos = sexo_pos.toUpperCase(); }
     public void setNacimientoPos(String nacimiento_pos){ this.nacimiento_pos = nacimiento_pos.toUpperCase(); }
     public void setPersonasCargo(String personas_cargo){ this.personas_cargo = personas_cargo.toUpperCase(); }
-    public void setNHijos(String n_hijos){ this.n_hijos = n_hijos.toUpperCase(); }
+    public void setNHijos(int n_hijos){ this.n_hijos = n_hijos; }
     public void setEstadoCivil(String estado_civil){ this.estado_civil = estado_civil.toUpperCase(); }
     public void setEscolaridadPos(String escolaridad_pos){ this.escolaridad_pos = escolaridad_pos.toUpperCase(); }
     public void setProfecionPos(String profecion_pos){ this.profecion_pos = profecion_pos.toUpperCase(); }
     public void setSaludPos(String salud_pos){ this.salud_pos = salud_pos.toUpperCase(); }
     public void setNomPos(String nom_pos){ this.nom_pos = nom_pos.toUpperCase(); }
     public void setPlaca(String placa){ this.placa = placa.toUpperCase(); }
+    public void setTipoDocumento(String tipo_documento){ this.tipo_documento = tipo_documento.toUpperCase(); }
     
     public int getIdPoseedor(){ return this.id_poseedor; }
     public int getTipoId(){ return this.tipo_id; }
@@ -59,12 +83,13 @@ public class ModeloPoseedor {
     public String getSexoPos(){ return this.sexo_pos; }
     public String getNacimientoPos(){ return this.nacimiento_pos; }
     public String getPersonasCargo(){ return this.personas_cargo; }
-    public String getNHijos(){ return this.n_hijos = n_hijos.toUpperCase(); }
+    public int getNHijos(){ return this.n_hijos; }
     public String getEstadoCivil(){ return this.estado_civil; }
     public String getEscolaridadPos(){ return this.escolaridad_pos; }
     public String getProfecionPos(){ return this.profecion_pos; }
     public String getSaludPos(){ return this.salud_pos; }
     public String getNomPos(){ return this.nom_pos; }
     public String getPlaca(){ return this.placa; }
+    public String getTipoDocumento(){ return this.tipo_documento; }
     
 }
