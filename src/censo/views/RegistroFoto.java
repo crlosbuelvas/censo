@@ -245,12 +245,16 @@ public class RegistroFoto extends javax.swing.JPanel {
                 !nom_pro.getText().equals("") &&
                 !String.valueOf(tipo_de_documento.getSelectedItem()).equals("") &&
                 !tipo_id.getText().equals("")){
-            
-            ModeloCenso MC = new ModeloCenso();
-            MC.setNCenso(Integer.parseInt(n_censo.getText()));
-            
-            ControladorCenso CC = new ControladorCenso(MC);
-            CC.InsertarActualizar("InsertInicial");
+            int _n_censo = 3;
+            while(_n_censo == 3){
+                ModeloCenso MC = new ModeloCenso();
+                MC.setNCenso(Integer.parseInt(n_censo.getText()));
+                
+                ControladorCenso CC = new ControladorCenso(MC);
+                _n_censo = CC.InsertarActualizar("InsertInicial");
+                
+                n_censo.setText(String.valueOf(Integer.parseInt(n_censo.getText()) + 1));
+            }
             
             ModeloImagen MI = new ModeloImagen();
             MI.setIdImagen(Integer.parseInt(n_censo.getText()));
@@ -285,6 +289,7 @@ public class RegistroFoto extends javax.swing.JPanel {
                 CP.InsertarActualizar("InsertInicial");
                 
             }
+            JOptionPane.showMessageDialog(null, "censo n°:" + n_censo.getText() + "\n el registro a sido exitoso");
         }
         Borrar();
         SelectCenso();

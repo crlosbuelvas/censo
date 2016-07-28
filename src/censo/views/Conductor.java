@@ -5,6 +5,8 @@
  */
 package censo.views;
 
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author Admin
@@ -81,7 +83,23 @@ public class Conductor extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    public void setData(javax.swing.table.DefaultTableModel data){
+        jTable1.setModel(data);
+    }
+    
+    public void Guardar(int n_censo){
+        TableModel tableModel = jTable1.getModel();
+        int cols = tableModel.getColumnCount();
+        int fils = tableModel.getRowCount();
 
+        for(int i=0; i<fils; i++) {
+            for(int j=0; j<cols; j++){
+                System.out.print(tableModel.getValueAt(i,j));
+                System.out.println();
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

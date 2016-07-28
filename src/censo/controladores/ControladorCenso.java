@@ -68,6 +68,7 @@ public class ControladorCenso {
                 return r;
             }catch(SQLException e){
                 System.err.println("error: " + e.getMessage());
+                return 3;
             }
             
         }

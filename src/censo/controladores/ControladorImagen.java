@@ -32,6 +32,36 @@ public class ControladorImagen {
         }
     }
     
+    public ModeloImagen Select(String consulta){
+        if(consulta.equals("SelectForId")){
+            try{
+                preparedStatement = con.prepareStatement("SELECT id_imagen, nombre, imagen FROM public.propietario_imagen WHERE id_imagen = ?;");
+                preparedStatement.setInt(1, MI.getIdImagen());
+                
+                resultSet = preparedStatement.executeQuery();
+                
+                while(resultSet.next()){
+                    
+                    System.out.println(resultSet.getBinaryStream("imagen"));
+                    //System.out.println(resultSet.getByte("imagen"));
+                    MI.setIdImagen(resultSet.getInt("id_imagen"));
+                    MI.setNombre(resultSet.getString("nombre"));
+                    MI.setImagen(resultSet.getBytes("imagen"));
+                }
+                
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+                
+                return MI;
+            }catch(SQLException e){
+                System.err.println("error en SelectForId");
+            }
+            
+        }
+        return null;
+    }
+    
     public int InsertarActualizar(String consulta){
         if(consulta.equals("InsertInicial")){
             try{

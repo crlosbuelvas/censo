@@ -17,7 +17,8 @@ public class VentanaBuscar extends javax.swing.JDialog {
     /**
      * Creates new form VentanaBuscar
      */
-    public VentanaBuscar(JFrame v) {
+    
+    public VentanaBuscar(JFrame v, RompeCabezas RC) {
         super(v,true);
         
         try {
@@ -35,7 +36,7 @@ public class VentanaBuscar extends javax.swing.JDialog {
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("Registro");
-        Buscador bus = new Buscador();
+        Buscador bus = new Buscador(RC);
         bus.setBounds(0, 0, 410, 100);
         
         setSize(bus.getSize().width, bus.getSize().height + 10);

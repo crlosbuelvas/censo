@@ -95,7 +95,10 @@ public class login extends javax.swing.JPanel {
         if(mu != null){
             if(mu.getCodPerfil() == 1){
                 login_v.setVisible(false);
-                VentanaRegistroFoto vp = new VentanaRegistroFoto();
+                VentanaRegistroFoto vf = new VentanaRegistroFoto();
+            }else if(mu.getCodPerfil() == 2){
+                login_v.setVisible(false);
+                VentanaPrincipal vp = new VentanaPrincipal();
             }
         }
     }//GEN-LAST:event_btn_aceptarActionPerformed

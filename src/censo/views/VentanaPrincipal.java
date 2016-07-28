@@ -20,6 +20,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
     /**
      * Creates new form main
      */
+    
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public VentanaPrincipal() {
         try {
@@ -125,7 +126,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
             VentanaRegistro v = new VentanaRegistro(this);
         }
         if(EV == (Object)Buscar){
-            VentanaBuscar v = new VentanaBuscar(this);
+            VentanaBuscar v = new VentanaBuscar(this, rc);
             
         }
     }

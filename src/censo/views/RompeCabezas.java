@@ -5,7 +5,20 @@
  */
 package censo.views;
 
+import censo.controladores.ControladorImagen;
+import censo.modelos.ModeloCenso;
+import censo.modelos.ModeloConductor;
+import censo.modelos.ModeloImagen;
+import censo.modelos.ModeloPerfil;
+import censo.modelos.ModeloPoseedor;
+import censo.modelos.ModeloPropietario;
+import censo.modelos.ModeloReporte;
+import censo.modelos.ModeloUsuario;
+import censo.modelos.ModeloVeiculo;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
@@ -18,6 +31,19 @@ public class RompeCabezas extends javax.swing.JPanel {
     /**
      * Creates new form RompeCabezas
      */
+    
+    ModeloCenso MCenso = null;
+    ModeloConductor[] MConductor = new ModeloConductor[5];
+    ModeloImagen MImagen;
+    ModeloPerfil MPerfil;
+    ModeloPoseedor MPoseedor;
+    ModeloPropietario MPropietario;
+    ModeloReporte MReporte;
+    ModeloUsuario MUsuario;
+    ModeloVeiculo MVehiculo;
+    
+    public int n_censo = 0;
+    
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public RompeCabezas(JFrame ventana) {
         setLayout(null);
@@ -25,7 +51,7 @@ public class RompeCabezas extends javax.swing.JPanel {
         veiculo = new Vehiculos();
         propietario = new Propietario();
         poseedor = new Poseedor();
-        camara = new Camara();
+        camara = new ImagenView();
         conductores = new Conductor();
         mandos = new Mandos();
         POS_PRO = new JTabbedPane();
@@ -50,8 +76,24 @@ public class RompeCabezas extends javax.swing.JPanel {
         add(camara);
         add(conductores);
         add(mandos);
+        
+        VentanaBuscar v = new VentanaBuscar(ventana, this);
     }
-
+    
+    public void buscar(){
+        MImagen = new ModeloImagen();
+        MImagen.setIdImagen(n_censo);
+        ControladorImagen CI = new ControladorImagen(MImagen);
+        MImagen = CI.Select("SelectForId");
+        
+        try {
+            camara.setImagenByte(MImagen.getImagenBytea());
+            System.err.println(MImagen.getImagenBytea());
+        } catch (IOException ex) {
+            Logger.getLogger(RompeCabezas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,7 +118,7 @@ public class RompeCabezas extends javax.swing.JPanel {
     private Vehiculos veiculo;
     private Propietario propietario;
     private Poseedor poseedor;
-    private Camara camara;
+    private ImagenView camara;
     private Conductor conductores;
     private Mandos mandos;
     private JTabbedPane POS_PRO;
