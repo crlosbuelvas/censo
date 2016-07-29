@@ -7,6 +7,7 @@ package censo.views;
 
 import censo.controladores.ControladorUsuario;
 import censo.modelos.ModeloUsuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -99,7 +100,11 @@ public class login extends javax.swing.JPanel {
             }else if(mu.getCodPerfil() == 2){
                 login_v.setVisible(false);
                 VentanaPrincipal vp = new VentanaPrincipal();
+            }else{
+                JOptionPane.showMessageDialog(null, "usuario y contraseña incorrecta", "info", JOptionPane.INFORMATION_MESSAGE);
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "usuario y contraseña incorrecta", "info", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btn_aceptarActionPerformed
 

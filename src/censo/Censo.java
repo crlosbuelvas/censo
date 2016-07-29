@@ -6,7 +6,6 @@
 package censo;
 
 import censo.views.VentanaLogin;
-import censo.views.VentanaPrincipal;
 
 /**
  *

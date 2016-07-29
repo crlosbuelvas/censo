@@ -14,9 +14,11 @@ public class Buscador extends javax.swing.JPanel {
     /**
      * Creates new form Buscador
      */
-    private RompeCabezas vb;
+    private RompeCabezas rc;
+    private VentanaBuscar vb;
     
-    public Buscador(RompeCabezas vb) {
+    public Buscador(RompeCabezas rc, VentanaBuscar vb) {
+        this.rc = rc;
         this.vb = vb;
         initComponents();
     }
@@ -74,8 +76,9 @@ public class Buscador extends javax.swing.JPanel {
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
-        vb.n_censo = Integer.parseInt(jTextField1.getText());
-        vb.buscar();
+        rc.n_censo = Integer.parseInt(jTextField1.getText());
+        rc.buscar();
+        vb.dispose();
     }//GEN-LAST:event_BuscarActionPerformed
 
 

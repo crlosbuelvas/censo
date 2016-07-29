@@ -36,7 +36,7 @@ public class VentanaBuscar extends javax.swing.JDialog {
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("Registro");
-        Buscador bus = new Buscador(RC);
+        Buscador bus = new Buscador(RC,this);
         bus.setBounds(0, 0, 410, 100);
         
         setSize(bus.getSize().width, bus.getSize().height + 10);
