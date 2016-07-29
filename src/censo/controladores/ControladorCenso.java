@@ -39,7 +39,7 @@ public class ControladorCenso {
                 preparedStatement = con.prepareStatement("SELECT * FROM public.censo ORDER BY n_censo DESC LIMIT 1;");
                 resultSet = preparedStatement.executeQuery();
                 while(resultSet.next()){
-                    MC.setNCenso(resultSet.getInt("n_censo"));
+                    MC.setNCenso(resultSet.getLong("n_censo"));
                 }
                 resultSet.close();
                 preparedStatement.close();
@@ -58,7 +58,7 @@ public class ControladorCenso {
         if(consulta.equals("InsertInicial")){
             try{
                 preparedStatement = con.prepareStatement("INSERT INTO public.censo(n_censo, fecha_alta) VALUES (? , current_date);");
-                preparedStatement.setInt(1, MC.getNCenso());
+                preparedStatement.setLong(1, MC.getNCenso());
                 
                 int r = preparedStatement.executeUpdate();
                 

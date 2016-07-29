@@ -22,7 +22,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
      */
     
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public VentanaPrincipal() {
+    public VentanaPrincipal(long nivel) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 System.out.println(info.getName());
@@ -65,11 +65,11 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
 
         Camara.setText("Camara");
         Menu.add(Camara);
-        
-        Registrar.setText("Registrar");
-        Registrar.addActionListener(this);
-        Menu.add(Registrar);
-        
+        if(nivel == 3){
+            Registrar.setText("Registrar");
+            Registrar.addActionListener(this);
+            Menu.add(Registrar);
+        }
         MenuBar.add(Menu);
         
         add(MenuBar, BorderLayout.NORTH);

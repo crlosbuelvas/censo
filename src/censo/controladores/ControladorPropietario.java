@@ -32,11 +32,37 @@ public class ControladorPropietario {
         }
     }
     
+    public ModeloPropietario Select(String consulta){
+        if(consulta.equals("SelectForId")){
+            try{
+                preparedStatement = con.prepareStatement("SELECT * FROM public.propietarios WHERE id_propietario = ?;");
+                
+                resultSet = preparedStatement.executeQuery();
+                
+                while(resultSet.next()){
+                    
+                    
+                    resultSet.close();
+                    preparedStatement.close();
+                    con.close();
+
+                    return MP;
+                }
+                
+                return null;
+            }catch(SQLException e){
+                System.err.println("error en SelectForId");
+            }
+            
+        }
+        return null;
+    }
+    
     public int InsertarActualizar(String consulta){
         if(consulta.equals("InsertInicial")){
             try{
                 preparedStatement = con.prepareStatement("INSERT INTO public.propietarios(tipo_id, ape1_pro, ape2_pro, nom_pro, tipo_documento) VALUES (?, ?, ?, ?, ?);");
-                preparedStatement.setInt(1, MP.getTipoId());
+                preparedStatement.setLong(1, MP.getTipoId());
                 preparedStatement.setString(2, MP.getApe1Pro());
                 preparedStatement.setString(3, MP.getApe2Pro());
                 preparedStatement.setString(4, MP.getNomPro());

@@ -10,16 +10,16 @@ package censo.modelos;
  * @author Admin
  */
 public class ModeloPerfil {
-    private int cod_perfil;
+    private long cod_perfil;
     private String desc_perfil;
     
-    public void setCodPerfil(int cod){
+    public void setCodPerfil(long cod){
         this.cod_perfil = cod;
     }
     public void setDescripcionPerfil(String desc){
         this.desc_perfil = desc.toLowerCase();
     }
-    public int getCodPerfil(){
+    public long getCodPerfil(){
         return this.cod_perfil;
     }
     public String getDescripcionPerfil(){

@@ -10,12 +10,12 @@ package censo.modelos;
  * @author Admin
  */
 public class ModeloVeiculo {
-    private int n_censo;
+    private long n_censo;
     private String placa;
     private String clase;
     private String servicio;
-    private int modelo;
-    private int cilindraje;
+    private long modelo;
+    private long cilindraje;
     private String color;
     private String marca;
     private String linea;
@@ -31,16 +31,16 @@ public class ModeloVeiculo {
     private String v_pago;
     private String uso_vehiculo;
     private String observacion;
-    private int id_propietario;
-    private int id_poseedor;
-    private int cod_conductor;
+    private long id_propietario;
+    private long id_poseedor;
+    private long cod_conductor;
     
-    public void setNCenso(int n_censo){ this.n_censo = n_censo; }
+    public void setNCenso(long n_censo){ this.n_censo = n_censo; }
     public void setPlaca(String placa){ this.placa = placa.toUpperCase(); }
     public void setClase(String clase){ this.clase = clase.toUpperCase(); }
     public void setServicio(String servicio){ this.servicio = servicio.toUpperCase(); }
-    public void setModelo(int modelo){ this.modelo = modelo; }
-    public void setCilindraje(int cilindraje){ this.cilindraje = cilindraje; }
+    public void setModelo(long modelo){ this.modelo = modelo; }
+    public void setCilindraje(long cilindraje){ this.cilindraje = cilindraje; }
     public void setColor(String color){ this.color = color.toUpperCase(); }
     public void setMarca(String marca){ this.marca = marca.toUpperCase(); }
     public void setLinea(String linea){ this.linea = linea.toUpperCase(); }
@@ -56,16 +56,16 @@ public class ModeloVeiculo {
     public void setVPago(String v_pago){ this.v_pago = v_pago.toUpperCase(); }
     public void setUsoVehiculo(String uso_vehiculo){ this.uso_vehiculo = uso_vehiculo.toUpperCase(); }
     public void setObservacion(String observacion){ this.servicio = observacion.toUpperCase(); }
-    public void setIdPropietario(int id_propietario){ this.cilindraje = id_propietario; }
-    public void setIdPoseedor(int id_poseedor){ this.id_poseedor = id_poseedor; }
-    public void setCodConductor(int cod_conductor){ this.cod_conductor = cod_conductor; }
+    public void setIdPropietario(long id_propietario){ this.cilindraje = id_propietario; }
+    public void setIdPoseedor(long id_poseedor){ this.id_poseedor = id_poseedor; }
+    public void setCodConductor(long cod_conductor){ this.cod_conductor = cod_conductor; }
     
-    public int getNCenso(){ return this.n_censo; }
+    public long getNCenso(){ return this.n_censo; }
     public String getPlaca(){ return this.placa; }
     public String getClase(){ return this.clase; }
     public String getServicio(){ return this.servicio; }
-    public int getModelo(){ return this.modelo; }
-    public int getCilindraje(){ return this.cilindraje; }
+    public long getModelo(){ return this.modelo; }
+    public long getCilindraje(){ return this.cilindraje; }
     public String getColor(){ return this.color; }
     public String getMarca(){ return this.marca; }
     public String getLinea(){ return this.linea; }
@@ -81,7 +81,7 @@ public class ModeloVeiculo {
     public String getVPago(){ return this.v_pago; }
     public String getUsoVehiculo(){ return this.uso_vehiculo; }
     public String getObservacion(){ return this.servicio; }
-    public int getIdPropietario(){ return this.cilindraje; }
-    public int getIdPoseedor(){ return this.id_poseedor; }
-    public int getCodConductor(){ return this.cod_conductor; }
+    public long getIdPropietario(){ return this.cilindraje; }
+    public long getIdPoseedor(){ return this.id_poseedor; }
+    public long getCodConductor(){ return this.cod_conductor; }
 }

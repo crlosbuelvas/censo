@@ -36,7 +36,7 @@ public class ControladorPoseedor {
         if(consulta.equals("InsertInicial")){
             try{
                 preparedStatement = con.prepareStatement("INSERT INTO public.poseedores(tipo_id, ape1_pos, ape2_pos, nom_pos, tipo_documento) VALUES (?, ?, ?, ?, ?);");
-                preparedStatement.setInt(1, MP.getTipoId());
+                preparedStatement.setLong(1, MP.getTipoId());
                 preparedStatement.setString(2, MP.getApe1Pos());
                 preparedStatement.setString(3, MP.getApe2Pos());
                 preparedStatement.setString(4, MP.getNomPos());

@@ -9,6 +9,7 @@ import censo.modelos.ModeloUsuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
@@ -39,7 +40,7 @@ public class ControladorUsuario {
                 preparedStatement = con.prepareStatement("SELECT id_usuario, cod_id, ape1_usuario, ape2_usuario, nom_usuario, " +
                         "dir_usuario, tel_usuario, mail_usuario, cod_perfil, contrasena_usuario " +
                         "FROM public.usuarios WHERE cod_id = ? AND contrasena_usuario = ?;");
-                preparedStatement.setInt(1, ms.getCodId());
+                preparedStatement.setLong(1, ms.getCodId());
                 preparedStatement.setString(2, ms.getContrasenaUsuario());
                 
                 resultSet = preparedStatement.executeQuery();
@@ -47,15 +48,17 @@ public class ControladorUsuario {
                     ms.setApe1Usuario(resultSet.getString("ape1_usuario"));
                     ms.setApe2Usuario(resultSet.getString("ape2_usuario"));
                     ms.setNomUsuario(resultSet.getString("nom_usuario"));
-                    ms.setIdUsuario(resultSet.getInt("id_usuario"));
-                    ms.setCodId(resultSet.getInt("cod_id"));
-                    ms.setCodPerfil(resultSet.getInt("cod_perfil"));
+                    ms.setIdUsuario(resultSet.getLong("id_usuario"));
+                    ms.setCodId(resultSet.getLong("cod_id"));
+                    ms.setCodPerfil(resultSet.getLong("cod_perfil"));
+
+                    resultSet.close();
+                    preparedStatement.close();
+                    con.close();
+                    
+                    return ms;
                 }
-                resultSet.close();
-                preparedStatement.close();
-                con.close();
-                return ms;
-            }catch(Exception e){
+            }catch(SQLException e){
                 e.printStackTrace();
                 System.err.println("hay un error en la consulta select for login");
                 JOptionPane.showMessageDialog(null, "error: " + e.getMessage(), "Error!!!", JOptionPane.ERROR_MESSAGE);
@@ -63,5 +66,34 @@ public class ControladorUsuario {
             }
         }
         return null;
+    }
+    
+    public int InsertarActualizar(String consulta){
+        if(consulta.equals("Insert")){
+            try{
+                preparedStatement = con.prepareStatement("INSERT INTO public.usuarios(cod_id, ape1_usuario, ape2_usuario, nom_usuario, dir_usuario, tel_usuario, mail_usuario, cod_perfil, contrasena_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+                preparedStatement.setLong(1, ms.getCodId());
+                preparedStatement.setString(2, ms.getApe1Usuario());
+                preparedStatement.setString(3, ms.getApe2Usuario());
+                preparedStatement.setString(4, ms.getNomUsuario());
+                preparedStatement.setString(5, ms.getDir());
+                preparedStatement.setLong(6, ms.getTelUsuario());
+                preparedStatement.setString(7, ms.getMailuUsuario());
+                preparedStatement.setLong(8, ms.getCodPerfil());
+                preparedStatement.setString(9, ms.getContrasenaUsuario());
+                
+                int r = preparedStatement.executeUpdate();
+                
+                preparedStatement.close();
+                con.close();
+                
+                return r;
+            }catch(SQLException e){
+                e.printStackTrace();
+                System.err.println("error: " + e.getMessage());
+            }
+            
+        }
+        return 3;
     }
 }

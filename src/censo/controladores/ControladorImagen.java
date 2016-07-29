@@ -36,7 +36,7 @@ public class ControladorImagen {
         if(consulta.equals("SelectForId")){
             try{
                 preparedStatement = con.prepareStatement("SELECT id_imagen, nombre, imagen FROM public.propietario_imagen WHERE id_imagen = ?;");
-                preparedStatement.setInt(1, MI.getIdImagen());
+                preparedStatement.setLong(1, MI.getIdImagen());
                 
                 resultSet = preparedStatement.executeQuery();
                 
@@ -44,7 +44,7 @@ public class ControladorImagen {
                     
                     System.out.println(resultSet.getBinaryStream("imagen"));
                     //System.out.println(resultSet.getByte("imagen"));
-                    MI.setIdImagen(resultSet.getInt("id_imagen"));
+                    MI.setIdImagen(resultSet.getLong("id_imagen"));
                     MI.setNombre(resultSet.getString("nombre"));
                     MI.setImagen(resultSet.getBytes("imagen"));
                 }
@@ -66,7 +66,7 @@ public class ControladorImagen {
         if(consulta.equals("InsertInicial")){
             try{
                 preparedStatement = con.prepareStatement("INSERT INTO public.propietario_imagen(id_imagen, nombre, imagen) VALUES (?, ?, ?);");
-                preparedStatement.setInt(1, MI.getIdImagen());
+                preparedStatement.setLong(1, MI.getIdImagen());
                 preparedStatement.setString(2, MI.getNombre());
                 preparedStatement.setBytes(3, MI.getImagenBytea());
                 

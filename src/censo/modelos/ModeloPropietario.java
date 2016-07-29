@@ -10,8 +10,8 @@ package censo.modelos;
  * @author Admin
  */
 public class ModeloPropietario {
-    private int id_propietario;
-    private int tipo_id;//cedula
+    private long id_propietario;
+    private long tipo_id;//cedula
     private String ape1_pro;
     private String ape2_pro;
     private String dir_pro;
@@ -21,7 +21,7 @@ public class ModeloPropietario {
     private String sexo_pro;
     private String nacimiento_pro;
     private String personas_cargo;
-    private int n_hijos;
+    private long n_hijos;
     private String estado_civil;
     private String escolaridad_pro;
     private String profecion_pro;
@@ -52,8 +52,8 @@ public class ModeloPropietario {
         tipo_documento = "";
     }
     
-    public void setIdPropietario(int id_propietario){ this.id_propietario = id_propietario; }
-    public void setTipoId(int tipo_id){ this.tipo_id = tipo_id; }
+    public void setIdPropietario(long id_propietario){ this.id_propietario = id_propietario; }
+    public void setTipoId(long tipo_id){ this.tipo_id = tipo_id; }
     public void setApe1Pro(String ape1_pro){ this.ape1_pro = ape1_pro.toUpperCase(); }
     public void setApe2Pro(String ape2_pro){ this.ape2_pro = ape2_pro.toUpperCase(); }
     public void setDirPro(String dir_pro){ this.dir_pro = dir_pro.toUpperCase(); }
@@ -63,7 +63,7 @@ public class ModeloPropietario {
     public void setSexoPro(String sexo_pro){ this.sexo_pro = sexo_pro.toUpperCase(); }
     public void setNacimientoPro(String nacimiento_pro){ this.nacimiento_pro = nacimiento_pro.toUpperCase(); }
     public void setPersonasCargo(String personas_cargo){ this.personas_cargo = personas_cargo.toUpperCase(); }
-    public void setNHijos(int n_hijos){ this.n_hijos = n_hijos; }
+    public void setNHijos(long n_hijos){ this.n_hijos = n_hijos; }
     public void setEstadoCivil(String estado_civil){ this.estado_civil = estado_civil.toUpperCase(); }
     public void setEscolaridadPro(String escolaridad_pro){ this.escolaridad_pro = escolaridad_pro.toUpperCase(); }
     public void setProfecionPro(String profecion_pro){ this.profecion_pro = profecion_pro.toUpperCase(); }
@@ -72,8 +72,8 @@ public class ModeloPropietario {
     public void setPlaca(String placa){ this.placa = placa.toUpperCase(); }
     public void setTipoDocumento(String tipo_documento){ this.tipo_documento = tipo_documento.toUpperCase(); }
     
-    public int getIdPropietario(){ return this.id_propietario; }
-    public int getTipoId(){ return this.tipo_id; }
+    public long getIdPropietario(){ return this.id_propietario; }
+    public long getTipoId(){ return this.tipo_id; }
     public String getApe1Pro(){ return this.ape1_pro; }
     public String getApe2Pro(){ return this.ape2_pro; }
     public String getDirPro(){ return this.dir_pro; }
@@ -83,7 +83,7 @@ public class ModeloPropietario {
     public String getSexoPro(){ return this.sexo_pro; }
     public String getNacimientoPro(){ return this.nacimiento_pro; }
     public String getPersonasCargo(){ return this.personas_cargo; }
-    public int getNHijos(){ return this.n_hijos; }
+    public long getNHijos(){ return this.n_hijos; }
     public String getEstadoCivil(){ return this.estado_civil; }
     public String getEscolaridadPro(){ return this.escolaridad_pro; }
     public String getProfecionPro(){ return this.profecion_pro; }

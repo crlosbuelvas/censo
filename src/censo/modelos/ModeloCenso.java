@@ -10,17 +10,17 @@ package censo.modelos;
  * @author Admin
  */
 public class ModeloCenso {
-    private int n_censo;
+    private long n_censo;
     
     public ModeloCenso(){
         n_censo = 0;
     }
     
-    public void setNCenso(int n_censo){
+    public void setNCenso(long n_censo){
         this.n_censo = n_censo;
     }
     
-    public int getNCenso(){
+    public long getNCenso(){
         return this.n_censo;
     }
 }

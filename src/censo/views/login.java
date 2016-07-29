@@ -99,7 +99,10 @@ public class login extends javax.swing.JPanel {
                 VentanaRegistroFoto vf = new VentanaRegistroFoto();
             }else if(mu.getCodPerfil() == 2){
                 login_v.setVisible(false);
-                VentanaPrincipal vp = new VentanaPrincipal();
+                VentanaPrincipal vp = new VentanaPrincipal(mu.getCodPerfil());
+            }else if(mu.getCodPerfil() == 3){
+                login_v.setVisible(false);
+                VentanaPrincipal vp = new VentanaPrincipal(mu.getCodPerfil());
             }else{
                 JOptionPane.showMessageDialog(null, "usuario y contraseña incorrecta", "info", JOptionPane.INFORMATION_MESSAGE);
             }

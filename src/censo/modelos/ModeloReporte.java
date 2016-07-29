@@ -10,12 +10,12 @@ package censo.modelos;
  * @author Admin
  */
 public class ModeloReporte {
-    private int id;
+    private long id;
     private String tabla;
-    private int clave_primaria;
-    private int estado;
+    private long clave_primaria;
+    private long estado;
     private String accion;
-    private int usuario;
+    private long usuario;
     
     public ModeloReporte(){
         id = 0;
@@ -26,41 +26,41 @@ public class ModeloReporte {
         usuario = 0;
     }
     
-    public void setId(int id){
+    public void setId(long id){
         this.id = id;
     }
     public void setTabla(String tabla){
         this.tabla = tabla;
     }
-    public void setClavePrimaria(int clave_primaria){
+    public void setClavePrimaria(long clave_primaria){
         this.clave_primaria = clave_primaria;
     }
-    public void setEstado(int estado){
+    public void setEstado(long estado){
         this.estado = estado;
     }
     public void setAccion(String accion){
         this.accion = accion.toUpperCase();
     }
-    public void setUsuario(int usuario){
+    public void setUsuario(long usuario){
         this.usuario = usuario;
     }
     
-    public int getId(){
+    public long getId(){
         return this.id;
     }
     public String getTabla(){
         return this.tabla;
     }
-    public int getClavePrimaria(){
+    public long getClavePrimaria(){
         return this.clave_primaria;
     }
-    public int getEstado(){
+    public long getEstado(){
         return this.estado;
     }
     public String getAccion(){
         return this.accion;
     }
-    public int getUsuario(){
+    public long getUsuario(){
         return this.usuario;
     }
 }

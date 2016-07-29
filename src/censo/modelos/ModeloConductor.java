@@ -10,23 +10,23 @@ package censo.modelos;
  * @author Admin
  */
 public class ModeloConductor {
-    private int cod_conductor;
+    private long cod_conductor;
     private String placa;
-    private int id_conductor;
+    private long id_conductor;
     private String ape1_con;
     private String ape2_con;
     private String nom_con;
     
-    public void setCodConductor(int cod_conductor){ this.cod_conductor = cod_conductor; }
+    public void setCodConductor(long cod_conductor){ this.cod_conductor = cod_conductor; }
     public void setPlaca(String placa){ this.placa = placa.toUpperCase(); }
-    public void setIdConductor(int id_conductor){ this.id_conductor = id_conductor; }
+    public void setIdConductor(long id_conductor){ this.id_conductor = id_conductor; }
     public void setApe1Con(String ape1_con){ this.ape1_con = ape1_con.toUpperCase(); }
     public void setApe2Con(String ape2_con){ this.ape2_con = ape2_con.toUpperCase(); }
     public void setNomCon(String nom_con){ this.nom_con = nom_con.toUpperCase(); }
     
-    public int getCodConductor(){ return this.cod_conductor; }
+    public long getCodConductor(){ return this.cod_conductor; }
     public String getPlaca(){ return this.placa; }
-    public int getIdConductor(){ return this.id_conductor; }
+    public long getIdConductor(){ return this.id_conductor; }
     public String getApe1Con(){ return this.ape1_con; }
     public String getApe2Con(){ return this.ape2_con; }
     public String getNomCon(){ return this.nom_con; }
