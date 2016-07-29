@@ -41,25 +41,101 @@ public class ControladorPropietario {
                 resultSet = preparedStatement.executeQuery();
                 
                 while(resultSet.next()){
-                    MP.setApe1Pro(resultSet.getString("ape1_pro"));
-                    MP.setApe2Pro(resultSet.getString("ape2_pro"));
-                    MP.setCiudadPro(resultSet.getString("ciudad_pro"));
-                    MP.setDirPro(resultSet.getString("dir_pro"));
-                    MP.setEscolaridadPro(resultSet.getString("escolaridad_pro"));
-                    MP.setEstadoCivil(resultSet.getString("estado_civil"));
-                    MP.setEstratoPro(resultSet.getString("estrato_pro"));
-                    MP.setLicencia(resultSet.getString("licencia"));
-                    MP.setNacimientoPro(resultSet.getString("nacimiento_pro"));
-                    MP.setNomPro(resultSet.getString("nom_pro"));
-                    MP.setPersonasCargo(resultSet.getString("personas_cargo"));
-                    MP.setPlaca(resultSet.getString("placa"));
-                    MP.setProfecionPro(resultSet.getString("profecion_pro"));
-                    MP.setSaludPro(resultSet.getString("salud_pro"));
-                    MP.setSexoPro(resultSet.getString("sexo_pro"));
-                    MP.setTipoDocumento(resultSet.getString("tipo_documento"));
-                    MP.setIdPropietario(resultSet.getLong("id_propietario"));
-                    MP.setNHijos(resultSet.getLong("n_hijos"));
-                    MP.setTipoId(resultSet.getLong("tipo_id"));
+                    try{
+                        MP.setApe1Pro(resultSet.getString("ape1_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setApe2Pro(resultSet.getString("ape2_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setCiudadPro(resultSet.getString("ciudad_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setDirPro(resultSet.getString("dir_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setEscolaridadPro(resultSet.getString("escolaridad_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setEstadoCivil(resultSet.getString("estado_civil"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setEstratoPro(resultSet.getString("estrato_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setLicencia(resultSet.getString("licencia"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setNacimientoPro(resultSet.getString("nacimiento_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setNomPro(resultSet.getString("nom_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setPersonasCargo(resultSet.getString("personas_cargo"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setPlaca(resultSet.getString("placa"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setProfecionPro(resultSet.getString("profecion_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setSaludPro(resultSet.getString("salud_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setSexoPro(resultSet.getString("sexo_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setTipoDocumento(resultSet.getString("tipo_documento"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setIdPropietario(resultSet.getLong("id_propietario"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setNHijos(resultSet.getLong("n_hijos"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setTipoId(resultSet.getLong("tipo_id"));
+                    }catch(NullPointerException e){
+                        
+                    }
                     
                     
                     resultSet.close();
@@ -81,12 +157,13 @@ public class ControladorPropietario {
     public int InsertarActualizar(String consulta){
         if(consulta.equals("InsertInicial")){
             try{
-                preparedStatement = con.prepareStatement("INSERT INTO public.propietarios(tipo_id, ape1_pro, ape2_pro, nom_pro, tipo_documento) VALUES (?, ?, ?, ?, ?);");
-                preparedStatement.setLong(1, MP.getTipoId());
-                preparedStatement.setString(2, MP.getApe1Pro());
-                preparedStatement.setString(3, MP.getApe2Pro());
-                preparedStatement.setString(4, MP.getNomPro());
-                preparedStatement.setString(5, MP.getTipoDocumento());
+                preparedStatement = con.prepareStatement("INSERT INTO public.propietarios(id_propietario, tipo_id, ape1_pro, ape2_pro, nom_pro, tipo_documento) VALUES (?, ?, ?, ?, ?, ?);");
+                preparedStatement.setLong(1, MP.getIdPropietario());
+                preparedStatement.setLong(2, MP.getTipoId());
+                preparedStatement.setString(3, MP.getApe1Pro());
+                preparedStatement.setString(4, MP.getApe2Pro());
+                preparedStatement.setString(5, MP.getNomPro());
+                preparedStatement.setString(6, MP.getTipoDocumento());
                 
                 int r = preparedStatement.executeUpdate();
                 

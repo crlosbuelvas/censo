@@ -59,9 +59,9 @@
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                       <Component id="ciudad_pro" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="Licencia1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="licencia2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="46" pref="46" max="-2" attributes="0"/>
                       <Component id="estrato_pro" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
@@ -134,8 +134,8 @@
               </Group>
               <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jRadioButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioButton2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="Licencia1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="licencia2" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -293,7 +293,7 @@
         <Property name="text" type="java.lang.String" value="Ciudad"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+    <Component class="javax.swing.JRadioButton" name="Licencia1">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="licencia"/>
@@ -303,7 +303,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="ciudad_pro">
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+    <Component class="javax.swing.JRadioButton" name="licencia2">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="licencia"/>

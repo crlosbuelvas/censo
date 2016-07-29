@@ -5,6 +5,8 @@
  */
 package censo.views;
 
+import censo.modelos.ModeloVeiculo;
+
 /**
  *
  * @author GESTIONSAS
@@ -368,7 +370,8 @@ public class Vehiculos extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel23)
                 .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -383,7 +386,10 @@ public class Vehiculos extends javax.swing.JPanel {
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton3ActionPerformed
-
+    
+    public void setModel(ModeloVeiculo MV){
+        cilindraje.setText(String.valueOf(MV.getCilindraje()));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cilindraje;

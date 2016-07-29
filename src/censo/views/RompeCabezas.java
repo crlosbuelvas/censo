@@ -97,6 +97,8 @@ public class RompeCabezas extends javax.swing.JPanel {
         MPropietario = new ModeloPropietario();
         MPropietario.setIdPropietario(n_censo);
         ControladorPropietario CP = new ControladorPropietario(MPropietario);
+        MPropietario = CP.Select("SelectForId");
+        propietario.setModelo(MPropietario);
     }
     
     /**

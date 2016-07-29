@@ -5,10 +5,9 @@
  */
 package censo.views;
 
-/**
- *
- * @author GESTIONSAS
- */
+import censo.modelos.ModeloPropietario;
+import javax.swing.JOptionPane;
+
 public class Propietario extends javax.swing.JPanel {
 
     /**
@@ -64,8 +63,8 @@ public class Propietario extends javax.swing.JPanel {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         tipo_id = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        Licencia1 = new javax.swing.JRadioButton();
+        licencia2 = new javax.swing.JRadioButton();
         salud_pro = new javax.swing.JComboBox<>();
 
         jLabel14.setText("jLabel14");
@@ -120,13 +119,13 @@ public class Propietario extends javax.swing.JPanel {
 
         jLabel21.setText("Salud");
 
-        jLabel22.setText("Tipo Id");
+        jLabel22.setText("Tipo de documento");
 
-        licencia.add(jRadioButton1);
-        jRadioButton1.setText("si");
+        licencia.add(Licencia1);
+        Licencia1.setText("si");
 
-        licencia.add(jRadioButton2);
-        jRadioButton2.setText("no");
+        licencia.add(licencia2);
+        licencia2.setText("no");
 
         salud_pro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Subsidiado", "contributivo" }));
 
@@ -170,9 +169,9 @@ public class Propietario extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(ciudad_pro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton1)
+                        .addComponent(Licencia1)
                         .addGap(2, 2, 2)
-                        .addComponent(jRadioButton2)
+                        .addComponent(licencia2)
                         .addGap(46, 46, 46)
                         .addComponent(estrato_pro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -234,8 +233,8 @@ public class Propietario extends javax.swing.JPanel {
                     .addComponent(jLabel5))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
+                    .addComponent(Licencia1)
+                    .addComponent(licencia2)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,9 +272,73 @@ public class Propietario extends javax.swing.JPanel {
     private void ape1_proActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ape1_proActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ape1_proActionPerformed
-
+    
+    public ModeloPropietario getModelo(){
+        if(!nom_pro.equals("") && !ape1_pro.equals("") && !ape2_pro.equals("") &&
+                !ciudad_pro.equals("") && !dir_pro.equals("") && !escolaridad_pro.equals("") && 
+                !estado_civil.equals("") && !estrato_pro.equals("") && !id_propietario.equals("") && 
+                !n_hijos.equals("") && !nacimiento_pro.equals("") && !personas_cargo.equals("") && 
+                !profecion_pro.equals("") && !tipo_id.equals("")){
+            try{
+                ModeloPropietario MP = new ModeloPropietario();
+                MP.setNomPro(nom_pro.getText());
+                MP.setApe1Pro(ape1_pro.getText());
+                MP.setApe2Pro(ape2_pro.getText());
+                MP.setCiudadPro(ciudad_pro.getText());
+                MP.setDirPro(dir_pro.getText());
+                MP.setEscolaridadPro(escolaridad_pro.getText());
+                MP.setEstadoCivil(estado_civil.getText());
+                MP.setEstratoPro(estrato_pro.getText());
+                MP.setTipoId(Long.parseLong(id_propietario.getText()));
+                if(Licencia1.isSelected()){
+                    MP.setLicencia("si");
+                }else{
+                    MP.setLicencia("no");
+                }
+                MP.setNHijos(Long.parseLong(n_hijos.getText()));
+                MP.setNacimientoPro(nacimiento_pro.getText());
+                MP.setPersonasCargo(personas_cargo.getText());
+                MP.setProfecionPro(profecion_pro.getText());
+                MP.setSaludPro(String.valueOf(salud_pro.getSelectedItem()));
+                MP.setSexoPro(String.valueOf(sexo_pro.getSelectedItem()));
+                MP.setTipoDocumento(tipo_id.getText());
+                
+                return MP;
+            }catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "los campos de identificacion y numero de hijos deven ser numericos deven ser numericos", "error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        return null;
+    }
+    
+    public void setModelo(ModeloPropietario MP){
+        nom_pro.setText(MP.getNomPro());
+        ape1_pro.setText(MP.getApe1Pro());
+        ape2_pro.setText(MP.getApe2Pro());
+        ciudad_pro.setText(MP.getCiudadPro());
+        dir_pro.setText(MP.getDirPro());
+        escolaridad_pro.setText(MP.getEscolaridadPro());
+        estado_civil.setText(MP.getEstadoCivil());
+        estrato_pro.setText(MP.getEstratoPro());
+        id_propietario.setText(String.valueOf(MP.getTipoId()));
+        if(MP.getLicencia().equals("SI")){
+            Licencia1.setSelected(true);
+            licencia2.setSelected(false);
+        }else{
+            Licencia1.setSelected(false);
+            licencia2.setSelected(true);
+        }
+        n_hijos.setText(String.valueOf(MP.getNHijos()));
+        nacimiento_pro.setText(MP.getNacimientoPro());
+        personas_cargo.setText(MP.getPersonasCargo());
+        profecion_pro.setText(MP.getProfecionPro());
+        salud_pro.setSelectedItem(MP.getSaludPro());
+        sexo_pro.setSelectedItem(MP.getSexoPro());
+        tipo_id.setText(MP.getTipoDocumento());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton Licencia1;
     private javax.swing.JTextField ape1_pro;
     private javax.swing.JTextField ape2_pro;
     private javax.swing.JTextField ciudad_pro;
@@ -305,9 +368,8 @@ public class Propietario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.ButtonGroup licencia;
+    private javax.swing.JRadioButton licencia2;
     private javax.swing.JTextField n_hijos;
     private javax.swing.JFormattedTextField nacimiento_pro;
     private javax.swing.JTextField nom_pro;
