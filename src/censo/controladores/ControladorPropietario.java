@@ -151,6 +151,123 @@ public class ControladorPropietario {
             }
             
         }
+        if(consulta.equals("SelectForNombre")){
+            try{
+                preparedStatement = con.prepareStatement("SELECT * FROM public.propietarios WHERE nom_pro = ?;");
+                
+                resultSet = preparedStatement.executeQuery();
+                
+                while(resultSet.next()){
+                    try{
+                        MP.setApe1Pro(resultSet.getString("ape1_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setApe2Pro(resultSet.getString("ape2_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setCiudadPro(resultSet.getString("ciudad_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setDirPro(resultSet.getString("dir_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setEscolaridadPro(resultSet.getString("escolaridad_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setEstadoCivil(resultSet.getString("estado_civil"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setEstratoPro(resultSet.getString("estrato_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setLicencia(resultSet.getString("licencia"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setNacimientoPro(resultSet.getString("nacimiento_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setNomPro(resultSet.getString("nom_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setPersonasCargo(resultSet.getString("personas_cargo"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setPlaca(resultSet.getString("placa"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setProfecionPro(resultSet.getString("profecion_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setSaludPro(resultSet.getString("salud_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setSexoPro(resultSet.getString("sexo_pro"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setTipoDocumento(resultSet.getString("tipo_documento"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setIdPropietario(resultSet.getLong("id_propietario"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setNHijos(resultSet.getLong("n_hijos"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    try{
+                        MP.setTipoId(resultSet.getLong("tipo_id"));
+                    }catch(NullPointerException e){
+                        
+                    }
+                    
+                    
+                    resultSet.close();
+                    preparedStatement.close();
+                    con.close();
+
+                    return MP;
+                }
+                
+                return null;
+            }catch(SQLException e){
+                System.err.println("error en SelectForId");
+            }
+            
+        }
         return null;
     }
     

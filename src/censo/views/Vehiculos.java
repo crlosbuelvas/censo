@@ -76,12 +76,12 @@ public class Vehiculos extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         servicio = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
+        soat1 = new javax.swing.JRadioButton();
+        soat2 = new javax.swing.JRadioButton();
+        tecno1 = new javax.swing.JRadioButton();
+        tecno2 = new javax.swing.JRadioButton();
+        extracontractual1 = new javax.swing.JRadioButton();
+        extracontractual2 = new javax.swing.JRadioButton();
         uso_vehiculo = new javax.swing.JComboBox<>();
 
         jLabel24.setText("jLabel24");
@@ -158,28 +158,28 @@ public class Vehiculos extends javax.swing.JPanel {
 
         jLabel7.setText("Modelo");
 
-        soat.add(jRadioButton1);
-        jRadioButton1.setText("SI");
+        soat.add(soat1);
+        soat1.setText("SI");
 
-        soat.add(jRadioButton2);
-        jRadioButton2.setText("NO");
+        soat.add(soat2);
+        soat2.setText("NO");
 
-        tecno.add(jRadioButton3);
-        jRadioButton3.setText("SI");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        tecno.add(tecno1);
+        tecno1.setText("SI");
+        tecno1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                tecno1ActionPerformed(evt);
             }
         });
 
-        tecno.add(jRadioButton4);
-        jRadioButton4.setText("NO");
+        tecno.add(tecno2);
+        tecno2.setText("NO");
 
-        extracontactual.add(jRadioButton5);
-        jRadioButton5.setText("SI");
+        extracontactual.add(extracontractual1);
+        extracontractual1.setText("SI");
 
-        extracontactual.add(jRadioButton6);
-        jRadioButton6.setText("NO");
+        extracontactual.add(extracontractual2);
+        extracontractual2.setText("NO");
 
         uso_vehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mototaxi", "Mensajeria", "M.D Transporte", "Otro" }));
 
@@ -223,23 +223,23 @@ public class Vehiculos extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButton1)
+                                        .addComponent(soat1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jRadioButton2))
+                                        .addComponent(soat2))
                                     .addComponent(jLabel13))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButton3)
+                                        .addComponent(tecno1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jRadioButton4))
+                                        .addComponent(tecno2))
                                     .addComponent(jLabel14))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButton5)
+                                        .addComponent(extracontractual1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jRadioButton6))
+                                        .addComponent(extracontractual2))
                                     .addComponent(jLabel20)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -348,12 +348,12 @@ public class Vehiculos extends javax.swing.JPanel {
                     .addComponent(n_licencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(o_transito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton2)
-                        .addComponent(jRadioButton3)
-                        .addComponent(jRadioButton4)
-                        .addComponent(jRadioButton5)
-                        .addComponent(jRadioButton6)))
+                        .addComponent(soat1)
+                        .addComponent(soat2)
+                        .addComponent(tecno1)
+                        .addComponent(tecno2)
+                        .addComponent(extracontractual1)
+                        .addComponent(extracontractual2)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
@@ -383,12 +383,16 @@ public class Vehiculos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_servicioActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void tecno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tecno1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_tecno1ActionPerformed
     
     public void setModel(ModeloVeiculo MV){
         cilindraje.setText(String.valueOf(MV.getCilindraje()));
+        clase.setSelectedItem(MV.getClase());
+        color.setText(MV.getColor());
+        // esto viene de una consulta ajena: fecha_censo.setText(TOOL_TIP_TEXT_KEY);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -396,6 +400,8 @@ public class Vehiculos extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> clase;
     private javax.swing.JTextField color;
     private javax.swing.ButtonGroup extracontactual;
+    private javax.swing.JRadioButton extracontractual1;
+    private javax.swing.JRadioButton extracontractual2;
     private javax.swing.JFormattedTextField fecha_censo;
     private javax.swing.JTextField fecha_de_pago;
     private javax.swing.JLabel jLabel1;
@@ -422,12 +428,6 @@ public class Vehiculos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField linea;
@@ -443,7 +443,11 @@ public class Vehiculos extends javax.swing.JPanel {
     private javax.swing.JTextField placa;
     private javax.swing.JComboBox<String> servicio;
     private javax.swing.ButtonGroup soat;
+    private javax.swing.JRadioButton soat1;
+    private javax.swing.JRadioButton soat2;
     private javax.swing.ButtonGroup tecno;
+    private javax.swing.JRadioButton tecno1;
+    private javax.swing.JRadioButton tecno2;
     private javax.swing.JComboBox<String> uso_vehiculo;
     private javax.swing.JTextField v_pago;
     // End of variables declaration//GEN-END:variables
