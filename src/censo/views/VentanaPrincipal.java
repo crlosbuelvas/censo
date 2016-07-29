@@ -55,7 +55,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
         MenuBar = new javax.swing.JMenuBar();
         Buscar = new javax.swing.JMenuItem();
         Registrar = new javax.swing.JMenuItem();
-        rc = new RompeCabezas(this);
+        
         
         Menu.setText("Menu");
         
@@ -73,6 +73,11 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
         MenuBar.add(Menu);
         
         add(MenuBar, BorderLayout.NORTH);
+        
+        
+        setVisible(true);
+        
+        rc = new RompeCabezas(this);
         add(rc, BorderLayout.CENTER);
         
         setVisible(true);

@@ -36,10 +36,30 @@ public class ControladorPropietario {
         if(consulta.equals("SelectForId")){
             try{
                 preparedStatement = con.prepareStatement("SELECT * FROM public.propietarios WHERE id_propietario = ?;");
+                preparedStatement.setLong(1, MP.getIdPropietario());
                 
                 resultSet = preparedStatement.executeQuery();
                 
                 while(resultSet.next()){
+                    MP.setApe1Pro(resultSet.getString("ape1_pro"));
+                    MP.setApe2Pro(resultSet.getString("ape2_pro"));
+                    MP.setCiudadPro(resultSet.getString("ciudad_pro"));
+                    MP.setDirPro(resultSet.getString("dir_pro"));
+                    MP.setEscolaridadPro(resultSet.getString("escolaridad_pro"));
+                    MP.setEstadoCivil(resultSet.getString("estado_civil"));
+                    MP.setEstratoPro(resultSet.getString("estrato_pro"));
+                    MP.setLicencia(resultSet.getString("licencia"));
+                    MP.setNacimientoPro(resultSet.getString("nacimiento_pro"));
+                    MP.setNomPro(resultSet.getString("nom_pro"));
+                    MP.setPersonasCargo(resultSet.getString("personas_cargo"));
+                    MP.setPlaca(resultSet.getString("placa"));
+                    MP.setProfecionPro(resultSet.getString("profecion_pro"));
+                    MP.setSaludPro(resultSet.getString("salud_pro"));
+                    MP.setSexoPro(resultSet.getString("sexo_pro"));
+                    MP.setTipoDocumento(resultSet.getString("tipo_documento"));
+                    MP.setIdPropietario(resultSet.getLong("id_propietario"));
+                    MP.setNHijos(resultSet.getLong("n_hijos"));
+                    MP.setTipoId(resultSet.getLong("tipo_id"));
                     
                     
                     resultSet.close();
