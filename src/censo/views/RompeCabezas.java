@@ -6,6 +6,7 @@
 package censo.views;
 
 import censo.controladores.ControladorImagen;
+import censo.controladores.ControladorPoseedor;
 import censo.controladores.ControladorPropietario;
 import censo.modelos.ModeloCenso;
 import censo.modelos.ModeloConductor;
@@ -95,9 +96,15 @@ public class RompeCabezas extends javax.swing.JPanel {
         
         MPropietario = new ModeloPropietario();
         MPropietario.setIdPropietario(n_censo);
-        ControladorPropietario CP = new ControladorPropietario(MPropietario);
-        MPropietario = CP.Select("SelectForId");
+        ControladorPropietario CPr = new ControladorPropietario(MPropietario);
+        MPropietario = CPr.Select("SelectForId");
         propietario.setModelo(MPropietario);
+        
+        MPoseedor = new ModeloPoseedor();
+        MPoseedor.setIdPoseedor(n_censo);
+        ControladorPoseedor CPo = new ControladorPoseedor(MPoseedor);
+        MPoseedor = CPo.Select("SelectForId");
+        poseedor.setModelo(MPoseedor);
     }
     
     /**

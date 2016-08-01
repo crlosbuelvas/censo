@@ -288,16 +288,16 @@ public class Propietario extends javax.swing.JPanel {
                 MP.setDirPro(dir_pro.getText());
                 MP.setEscolaridadPro(escolaridad_pro.getText());
                 MP.setEstadoCivil(estado_civil.getText());
-                MP.setEstratoPro(estrato_pro.getText());
+                MP.setEstratoPro(Integer.parseInt(estrato_pro.getText()));
                 MP.setTipoId(Long.parseLong(id_propietario.getText()));
                 if(Licencia1.isSelected()){
                     MP.setLicencia("si");
                 }else{
                     MP.setLicencia("no");
                 }
-                MP.setNHijos(Long.parseLong(n_hijos.getText()));
+                MP.setNHijos(Integer.parseInt(n_hijos.getText()));
                 MP.setNacimientoPro(nacimiento_pro.getText());
-                MP.setPersonasCargo(personas_cargo.getText());
+                MP.setPersonasCargo(Integer.parseInt(personas_cargo.getText()));
                 MP.setProfecionPro(profecion_pro.getText());
                 MP.setSaludPro(String.valueOf(salud_pro.getSelectedItem()));
                 MP.setSexoPro(String.valueOf(sexo_pro.getSelectedItem()));
@@ -319,7 +319,7 @@ public class Propietario extends javax.swing.JPanel {
         dir_pro.setText(MP.getDirPro());
         escolaridad_pro.setText(MP.getEscolaridadPro());
         estado_civil.setText(MP.getEstadoCivil());
-        estrato_pro.setText(MP.getEstratoPro());
+        estrato_pro.setText(String.valueOf(MP.getEstratoPro()));
         id_propietario.setText(String.valueOf(MP.getTipoId()));
         if(MP.getLicencia().equals("SI")){
             Licencia1.setSelected(true);
@@ -330,7 +330,7 @@ public class Propietario extends javax.swing.JPanel {
         }
         n_hijos.setText(String.valueOf(MP.getNHijos()));
         nacimiento_pro.setText(MP.getNacimientoPro());
-        personas_cargo.setText(MP.getPersonasCargo());
+        personas_cargo.setText(String.valueOf(MP.getPersonasCargo()));
         profecion_pro.setText(MP.getProfecionPro());
         salud_pro.setSelectedItem(MP.getSaludPro());
         sexo_pro.setSelectedItem(MP.getSexoPro());

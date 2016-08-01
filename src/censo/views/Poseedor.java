@@ -280,16 +280,16 @@ public class Poseedor extends javax.swing.JPanel {
                 MP.setDirPos(dir_pro.getText());
                 MP.setEscolaridadPos(escolaridad_pro.getText());
                 MP.setEstadoCivil(estado_civil.getText());
-                MP.setEstratoPos(estrato_pro.getText());
+                MP.setEstratoPos(Integer.parseInt(estrato_pro.getText()));
                 MP.setTipoId(Long.parseLong(id_propietario.getText()));
                 if(Licencia1.isSelected()){
                     MP.setLicencia("si");
                 }else{
                     MP.setLicencia("no");
                 }
-                MP.setNHijos(Long.parseLong(n_hijos.getText()));
+                MP.setNHijos(Integer.parseInt(n_hijos.getText()));
                 MP.setNacimientoPos(nacimiento_pro.getText());
-                MP.setPersonasCargo(personas_cargo.getText());
+                MP.setPersonasCargo(Integer.parseInt(personas_cargo.getText()));
                 MP.setProfecionPos(profecion_pro.getText());
                 MP.setSaludPos(String.valueOf(salud_pro.getSelectedItem()));
                 MP.setSexoPos(String.valueOf(sexo_pro.getSelectedItem()));
@@ -311,7 +311,7 @@ public class Poseedor extends javax.swing.JPanel {
         dir_pro.setText(MP.getDirPos());
         escolaridad_pro.setText(MP.getEscolaridadPos());
         estado_civil.setText(MP.getEstadoCivil());
-        estrato_pro.setText(MP.getEstratoPos());
+        estrato_pro.setText(String.valueOf(MP.getEstratoPos()));
         id_propietario.setText(String.valueOf(MP.getTipoId()));
         if(MP.getLicencia().equals("SI")){
             Licencia1.setSelected(true);
@@ -322,11 +322,11 @@ public class Poseedor extends javax.swing.JPanel {
         }
         n_hijos.setText(String.valueOf(MP.getNHijos()));
         nacimiento_pro.setText(MP.getNacimientoPos());
-        personas_cargo.setText(MP.getPersonasCargo());
+        personas_cargo.setText(String.valueOf(MP.getPersonasCargo()));
         profecion_pro.setText(MP.getProfecionPos());
         salud_pro.setSelectedItem(MP.getSaludPos());
         sexo_pro.setSelectedItem(MP.getSexoPos());
-        tipo_id.setText(String.valueOf(MP.getTipoId()));
+        tipo_id.setText(MP.getTipoDocumento());
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

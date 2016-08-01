@@ -33,7 +33,7 @@ public class Mandos extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        jButton1.setText("CREAR");
+        jButton1.setText("GUARDAR");
 
         jButton2.setText("MODIFICAR");
 
