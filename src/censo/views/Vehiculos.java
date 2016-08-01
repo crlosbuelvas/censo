@@ -392,9 +392,85 @@ public class Vehiculos extends javax.swing.JPanel {
         clase.setSelectedItem(MV.getClase());
         color.setText(MV.getColor());
         // esto viene de una consulta ajena: fecha_censo.setText(TOOL_TIP_TEXT_KEY);
-        
+        if(MV.getExtra().toUpperCase().equals("SI")){
+            extracontractual1.setSelected(true);
+            extracontractual2.setSelected(false);
+        }else{
+            extracontractual1.setSelected(false);
+            extracontractual2.setSelected(true);
+        }
+        fecha_de_pago.setText(MV.getFecha_de_pago());
+        linea.setText(MV.getLinea());
+        marca.setText(MV.getMarca());
+        modelo.setText(String.valueOf(MV.getModelo()));
+        n_censo.setText(String.valueOf(MV.getNCenso()));
+        n_chasis.setText(MV.getNChasis());
+        n_licencia.setText(MV.getNLicencia());
+        n_motor.setText(MV.getNMotor());
+        n_recibo.setText(MV.getNRecibo());
+        o_transito.setText(MV.getNTransito());
+        observacion.setText(MV.getObservacion());
+        placa.setText(MV.getPlaca());
+        servicio.setSelectedItem(MV.getServicio());
+        if(MV.getSoat().toUpperCase().equals("SI")){
+            soat1.setSelected(true);
+            soat2.setSelected(false);
+        }else{
+            soat1.setSelected(false);
+            soat2.setSelected(true);
+        }
+        if(MV.getTecno().toUpperCase().equals("SI")){
+            tecno1.setSelected(true);
+            tecno2.setSelected(false);
+        }else{
+            tecno1.setSelected(false);
+            tecno2.setSelected(true);
+        }
+        uso_vehiculo.setSelectedItem(MV.getUsoVehiculo());
+        v_pago.setText(MV.getVPago());
     }
-
+    
+    public ModeloVeiculo getModel(){
+        MV = new ModeloVeiculo();
+        MV.setCilindraje(Long.parseLong(cilindraje.getText()));
+        MV.setClase(String.valueOf(clase.getSelectedItem()));
+        MV.setColor(color.getText());
+        // esto viene de una consulta ajena: fecha_censo.setText(TOOL_TIP_TEXT_KEY);
+        if(extracontractual1.isSelected()){
+            MV.setExtra("SI");
+        }else{
+            MV.setExtra("NO");
+        }
+        MV.setFecha_de_pago(fecha_de_pago.getText());
+        MV.setLinea(linea.getText());
+        MV.setMarca(marca.getText());
+        MV.setModelo(Long.parseLong(modelo.getText()));
+        MV.setNCenso(Long.parseLong(n_censo.getText()));
+        MV.setNChasis(n_chasis.getText());
+        MV.setNLicencia(n_licencia.getText());
+        MV.setNMotor(n_motor.getText());
+        MV.setNRecibo(n_recibo.getText());
+        MV.setNTransito(o_transito.getText());
+        MV.setObservacion(observacion.getText());
+        MV.setPlaca(placa.getText());
+        MV.setServicio(servicio.getSelectedItem().toString());
+        if(soat1.isSelected()){
+            MV.setSoat("SI");
+        }else{
+            MV.setSoat("NO");
+        }
+        if(tecno1.isSelected()){
+            MV.setTecno("SI");
+        }else{
+            MV.setTecno("NO");
+        }
+        MV.setUsoVehiculo(uso_vehiculo.getSelectedItem().toString());
+        MV.setVPago(v_pago.getText());
+        
+        return MV;
+    }
+    
+    ModeloVeiculo MV;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cilindraje;
     private javax.swing.JComboBox<String> clase;

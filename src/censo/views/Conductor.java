@@ -5,6 +5,7 @@
  */
 package censo.views;
 
+import censo.modelos.ModeloConductor;
 import javax.swing.table.TableModel;
 
 /**
@@ -88,17 +89,47 @@ public class Conductor extends javax.swing.JPanel {
         jTable1.setModel(data);
     }
     
-    public void Guardar(int n_censo){
+    public ModeloConductor[] getConductores(){
+        ModeloConductor[] MCA = new ModeloConductor[5];
+        
         TableModel tableModel = jTable1.getModel();
         int cols = tableModel.getColumnCount();
         int fils = tableModel.getRowCount();
 
         for(int i=0; i<fils; i++) {
-            for(int j=0; j<cols; j++){
-                System.out.print(tableModel.getValueAt(i,j));
-                System.out.println();
-            }
+            MCA[i] = new ModeloConductor();
+            
+            MCA[i].setApe1Con(tableModel.getValueAt(i,2).toString().split(" ")[0]);
+            MCA[i].setApe2Con(tableModel.getValueAt(i,2).toString().split(" ")[1]);
+            MCA[i].setNomCon(tableModel.getValueAt(i,1).toString());
+            MCA[i].setIdConductor(Long.parseLong(tableModel.getValueAt(i,3).toString()));
+            MCA[i].setNit(tableModel.getValueAt(i,0).toString());
         }
+        return MCA;
+    }
+    
+    public void setConductores(ModeloConductor[] MC){
+        
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {MC[0].getNit(), MC[0].getNomCon(), MC[0].getApe1Con()+" "+MC[0].getApe2Con(), MC[0].getIdConductor()},
+                {MC[1].getNit(), MC[1].getNomCon(), MC[1].getApe1Con()+" "+MC[1].getApe2Con(), MC[1].getIdConductor()},
+                {MC[2].getNit(), MC[2].getNomCon(), MC[2].getApe1Con()+" "+MC[2].getApe2Con(), MC[2].getIdConductor()},
+                {MC[3].getNit(), MC[3].getNomCon(), MC[3].getApe1Con()+" "+MC[3].getApe2Con(), MC[3].getIdConductor()},
+                {MC[4].getNit(), MC[4].getNomCon(), MC[4].getApe1Con()+" "+MC[4].getApe2Con(), MC[4].getIdConductor()}
+            },
+            new String [] {
+                "N.I.T", "Nombre", "Apellido", "N° de documento"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

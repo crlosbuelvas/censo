@@ -16,7 +16,6 @@ import censo.modelos.ModeloPropietario;
 import censo.modelos.ModeloReporte;
 import censo.modelos.ModeloUsuario;
 import censo.modelos.ModeloVeiculo;
-import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
