@@ -98,12 +98,24 @@ public class Conductor extends javax.swing.JPanel {
 
         for(int i=0; i<fils; i++) {
             MCA[i] = new ModeloConductor();
-            
-            MCA[i].setApe1Con(tableModel.getValueAt(i,2).toString().split(" ")[0]);
-            MCA[i].setApe2Con(tableModel.getValueAt(i,2).toString().split(" ")[1]);
-            MCA[i].setNomCon(tableModel.getValueAt(i,1).toString());
-            MCA[i].setIdConductor(Long.parseLong(tableModel.getValueAt(i,3).toString()));
-            MCA[i].setNit(tableModel.getValueAt(i,0).toString());
+            if(tableModel.getValueAt(i,2) != null){
+                MCA[i].setApe1Con(tableModel.getValueAt(i,2).toString().split(" ")[0]);
+                try{
+                    MCA[i].setApe2Con(tableModel.getValueAt(i,2).toString().split(" ")[1]);
+                }catch(Exception e){
+                    System.out.println("el conductor " + tableModel.getValueAt(i,2).toString().split(" ")[0] +
+                            " no tiene segundo nombre");
+                }
+            }
+            if(tableModel.getValueAt(i,1) != null){
+                MCA[i].setNomCon(tableModel.getValueAt(i,1).toString());
+            }
+            if(tableModel.getValueAt(i,3) != null){
+                MCA[i].setIdConductor(Long.parseLong(tableModel.getValueAt(i,3).toString()));
+            }
+            if(tableModel.getValueAt(i,0) != null){
+                MCA[i].setNit(tableModel.getValueAt(i,0).toString());
+            }
         }
         return MCA;
     }

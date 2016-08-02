@@ -470,7 +470,7 @@ public class Vehiculos extends javax.swing.JPanel {
         return MV;
     }
     
-    ModeloVeiculo MV;
+    private ModeloVeiculo MV;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cilindraje;
     private javax.swing.JComboBox<String> clase;

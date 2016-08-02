@@ -8,6 +8,7 @@ package censo.views;
 import censo.controladores.ControladorImagen;
 import censo.controladores.ControladorPoseedor;
 import censo.controladores.ControladorPropietario;
+import censo.controladores.ControladorVehiculo;
 import censo.modelos.ModeloCenso;
 import censo.modelos.ModeloConductor;
 import censo.modelos.ModeloImagen;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 
 /**
@@ -54,7 +56,7 @@ public class RompeCabezas extends javax.swing.JPanel {
         poseedor = new Poseedor();
         camara = new ImagenView();
         conductores = new Conductor();
-        mandos = new Mandos();
+        mandos = new Mandos(this);
         POS_PRO = new JTabbedPane();
         
         
@@ -103,8 +105,78 @@ public class RompeCabezas extends javax.swing.JPanel {
         MPoseedor = new ModeloPoseedor();
         MPoseedor.setIdPoseedor(n_censo);
         ControladorPoseedor CPo = new ControladorPoseedor(MPoseedor);
+        System.out.println(MPoseedor.getIdPoseedor());
         MPoseedor = CPo.Select("SelectForId");
         poseedor.setModelo(MPoseedor);
+        
+        MVehiculo = new ModeloVeiculo();
+        MVehiculo.setNCenso(n_censo);
+        ControladorVehiculo CV = new ControladorVehiculo(MVehiculo);
+        MVehiculo = CV.Select("SelectForId");
+        veiculo.setModel(MVehiculo);
+    }
+    
+    public void guardar(){
+        int susses1, susses2, susses3, susses4;
+        
+        MPropietario = new ModeloPropietario();
+        MPropietario.setIdPropietario(n_censo);
+        ControladorPropietario CPr = new ControladorPropietario(MPropietario);
+        if(CPr.Select("SelectForId").getIdPropietario() != 0){
+            MPropietario = propietario.getModelo();
+            MPropietario.setIdPropietario(n_censo);
+            CPr = new ControladorPropietario(MPropietario);
+            susses1 = CPr.InsertarActualizar("Actualizar");
+        }else{
+            MPropietario = propietario.getModelo();
+            MPropietario.setIdPropietario(n_censo);
+            CPr = new ControladorPropietario(MPropietario);
+            susses1 = CPr.InsertarActualizar("Insertar");
+        }
+        
+        MPoseedor = new ModeloPoseedor();
+        MPoseedor.setIdPoseedor(n_censo);
+        ControladorPoseedor CPo = new ControladorPoseedor(MPoseedor);
+        if(CPo.Select("SelectForId").getIdPoseedor() != 0){
+            MPoseedor = poseedor.getModelo();
+            MPoseedor.setIdPoseedor(n_censo);
+            CPo = new ControladorPoseedor(MPoseedor);
+            susses2 = CPo.InsertarActualizar("Actualizar");
+        }else{
+            MPoseedor = poseedor.getModelo();
+            MPoseedor.setIdPoseedor(n_censo);
+            CPo = new ControladorPoseedor(MPoseedor);
+            susses2 = CPo.InsertarActualizar("Insertar");
+        }
+        
+        MVehiculo = new ModeloVeiculo();
+        MVehiculo.setNCenso(n_censo);
+        ControladorVehiculo CV = new ControladorVehiculo(MVehiculo);
+        if(CV.Select("SelectForId").getNCenso() != 0){
+            System.out.println("1");
+            MVehiculo = veiculo.getModel();
+            MVehiculo.setNCenso(n_censo);
+            MVehiculo.setIdPoseedor(n_censo);
+            MVehiculo.setIdPropietario(n_censo);
+            MVehiculo.setCodConductor(n_censo);
+            CV = new ControladorVehiculo(MVehiculo);
+            susses3 = CV.InsertarActualizar("Actualizar");
+        }else{
+            System.out.println("2");
+            MVehiculo = veiculo.getModel();
+            MVehiculo.setNCenso(n_censo);
+            MVehiculo.setIdPoseedor(n_censo);
+            MVehiculo.setIdPropietario(n_censo);
+            MVehiculo.setCodConductor(n_censo);
+            CV = new ControladorVehiculo(MVehiculo);
+            susses3 = CV.InsertarActualizar("Insertar");
+        }
+        
+        if (susses1 != 3 && susses2 != 3 && susses3 != 3) {
+            JOptionPane.showMessageDialog(null, "censo actualizado de manera exitosa", "info", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "propietario no actualizado", "info", JOptionPane.WARNING_MESSAGE);
+        }
     }
     
     /**

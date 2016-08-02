@@ -42,99 +42,99 @@ public class ControladorPoseedor {
                 
                 while(resultSet.next()){
                     try{
-                        MP.setApe1Pos(resultSet.getString("ape1_pro"));
+                        MP.setApe1Pos(resultSet.getString("ape1_pos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
-                        MP.setApe2Pos(resultSet.getString("ape2_pro"));
+                        MP.setApe2Pos(resultSet.getString("ape2_pos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
-                        MP.setCiudadPos(resultSet.getString("ciudad_pro"));
+                        MP.setCiudadPos(resultSet.getString("ciudad_pos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
-                        MP.setDirPos(resultSet.getString("dir_pro"));
+                        MP.setDirPos(resultSet.getString("dir_pos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
-                        MP.setEscolaridadPos(resultSet.getString("escolaridad_pro"));
+                        MP.setEscolaridadPos(resultSet.getString("escolaridad_pos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
                         MP.setEstadoCivil(resultSet.getString("estado_civil"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
-                        MP.setEstratoPos(resultSet.getInt("estrato_pro"));
+                        MP.setEstratoPos(resultSet.getInt("estrato_pos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
                         MP.setLicencia(resultSet.getString("licencia"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
-                        MP.setNacimientoPos(resultSet.getString("nacimiento_pro"));
+                        MP.setNacimientoPos(resultSet.getString("nacimiento_pos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
-                        MP.setNomPos(resultSet.getString("nom_pro"));
+                        MP.setNomPos(resultSet.getString("nom_pos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
                         MP.setPersonasCargo(resultSet.getInt("personas_cargo"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
                         MP.setPlaca(resultSet.getString("placa"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
-                        MP.setProfecionPos(resultSet.getString("profecion_pro"));
+                        MP.setProfecionPos(resultSet.getString("profecion_pos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
-                        MP.setSaludPos(resultSet.getString("salud_pro"));
+                        MP.setSaludPos(resultSet.getString("salud_pos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
-                        MP.setSexoPos(resultSet.getString("sexo_pro"));
+                        MP.setSexoPos(resultSet.getString("sexo_pos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
                         MP.setTipoDocumento(resultSet.getString("tipo_documento"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
-                        MP.setIdPoseedor(resultSet.getLong("id_propietario"));
+                        MP.setIdPoseedor(resultSet.getLong("id_poseedor"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
                         MP.setNHijos(resultSet.getInt("n_hijos"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     try{
                         MP.setTipoId(resultSet.getLong("tipo_id"));
                     }catch(NullPointerException e){
-                        
+                        System.out.println(e.getMessage());
                     }
                     
                     
@@ -144,7 +144,7 @@ public class ControladorPoseedor {
 
                     return MP;
                 }
-                
+                MP.setIdPoseedor(0);
                 return MP;
             }catch(SQLException e){
                 System.err.println("error en SelectForId");
@@ -171,14 +171,26 @@ public class ControladorPoseedor {
                 
                 return r;
             }catch(SQLException e){
-                System.err.println("error");
+                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
             
         }
-        if(consulta.equals("Insert")){
+        if(consulta.equals("Actualizar") || consulta.equals("Insertar")){
             try{
-                preparedStatement = con.prepareStatement(
-                    "INSERT INTO public.poseedores(" +
+                if(consulta.equals("Actualizar")){
+                    preparedStatement = con.prepareStatement(
+                        "UPDATE public.poseedores " +
+                            "SET tipo_id=?, ape1_pos=?, ape2_pos=?, dir_pos=?, estrato_pos=?, " +
+                                "ciudad_pos=?, licencia=?, sexo_pos=?, nacimiento_pos=?, personas_cargo=?, " +
+                                "n_hijos=?, estado_civil=?, escolaridad_pos=?, profecion_pos=?, " +
+                                "salud_pos=?, nom_pos=?, placa=?, id_poseedor=?, tipo_documento=?" +
+                            "WHERE id_poseedor = ?;"
+                    );
+                    preparedStatement.setLong(20, MP.getIdPoseedor());
+                }else{
+                    preparedStatement = con.prepareStatement(
+                        "INSERT INTO public.poseedores(" +
                             "tipo_id, ape1_pos, ape2_pos, dir_pos, estrato_pos, ciudad_pos, " +
                             "licencia, sexo_pos, nacimiento_pos, personas_cargo, n_hijos, " +
                             "estado_civil, escolaridad_pos, profecion_pos, salud_pos, nom_pos, " +
@@ -187,7 +199,9 @@ public class ControladorPoseedor {
                             "?, ?, ?, ?, ?, " +
                             "?, ?, ?, ?, ?, " +
                             "?, ?, ?);"
-                );
+                    );
+                }
+                
                 if(MP.getTipoId() != 0){
                     preparedStatement.setLong(1, MP.getTipoId());
                 }else{
@@ -231,7 +245,7 @@ public class ControladorPoseedor {
                 if(!MP.getNacimientoPos().equals("")){
                     preparedStatement.setString(9, MP.getNacimientoPos());
                 }else{
-                    preparedStatement.setNull(9, java.sql.Types.VARCHAR);
+                    preparedStatement.setNull(9, java.sql.Types.DATE);
                 }
                 if(MP.getPersonasCargo()!= 0){
                     preparedStatement.setInt(10, MP.getPersonasCargo());
@@ -291,7 +305,8 @@ public class ControladorPoseedor {
                 
                 return r;
             }catch(SQLException e){
-                System.err.println("error");
+                System.err.println(e.getMessage());
+                e.printStackTrace();
             }
             
         }

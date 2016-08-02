@@ -300,7 +300,7 @@ public class Propietario extends javax.swing.JPanel {
                 MP.setPersonasCargo(Integer.parseInt(personas_cargo.getText()));
                 MP.setProfecionPro(profecion_pro.getText());
                 MP.setSaludPro(String.valueOf(salud_pro.getSelectedItem()));
-                MP.setSexoPro(String.valueOf(sexo_pro.getSelectedItem()));
+                MP.setSexoPro(String.valueOf(sexo_pro.getSelectedItem()).substring(0, 1));
                 MP.setTipoDocumento(tipo_id.getText());
                 
                 return MP;

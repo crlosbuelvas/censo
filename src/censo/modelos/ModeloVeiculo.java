@@ -35,6 +35,33 @@ public class ModeloVeiculo {
     private long id_poseedor;
     private long cod_conductor;
     
+    public ModeloVeiculo(){
+        n_censo = 0;
+        placa = "";
+        clase = "";
+        servicio = "";
+        modelo = 0;
+        cilindraje = 0;
+        color = "";
+        marca = "";
+        linea = "";
+        n_motor = "";
+        n_chasis = "";
+        n_licencia = "";
+        o_transito = "";
+        soat = "";
+        tecno = "";
+        extra = "";
+        fecha_de_pago = "";
+        n_recibo = "";
+        v_pago = "";
+        uso_vehiculo = "";
+        observacion = "";
+        id_propietario = 0;
+        id_poseedor = 0;
+        cod_conductor = 0;
+    }
+    
     public void setNCenso(long n_censo){ this.n_censo = n_censo; }
     public void setPlaca(String placa){ this.placa = placa.toUpperCase(); }
     public void setClase(String clase){ this.clase = clase.toUpperCase(); }

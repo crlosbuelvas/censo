@@ -17,6 +17,15 @@ public class ModeloConductor {
     private String ape2_con;
     private String nom_con;
     
+    public ModeloConductor(){
+        cod_conductor = 0;
+        nit = "";
+        id_conductor = 0;
+        ape1_con = "";
+        ape2_con = "";
+        nom_con = "";
+    }
+    
     public void setCodConductor(long cod_conductor){ this.cod_conductor = cod_conductor; }
     public void setNit(String nit){ this.nit = nit.toUpperCase(); }
     public void setIdConductor(long id_conductor){ this.id_conductor = id_conductor; }

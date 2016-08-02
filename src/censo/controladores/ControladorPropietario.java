@@ -145,7 +145,8 @@ public class ControladorPropietario {
                     return MP;
                 }
                 
-                return null;
+                MP.setIdPropietario(0);
+                return MP;
             }catch(SQLException e){
                 System.err.println("error en SelectForId");
             }
@@ -172,23 +173,36 @@ public class ControladorPropietario {
                 
                 return r;
             }catch(SQLException e){
-                System.err.println("error");
+                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
             
         }
-        if(consulta.equals("Insert")){
+        if(consulta.equals("Actualizar") || consulta.equals("Insertar")){
             try{
-                preparedStatement = con.prepareStatement(
-                    "INSERT INTO public.poseedores(" +
-                            "tipo_id, ape1_pos, ape2_pos, dir_pos, estrato_pos, ciudad_pos, " +
-                            "licencia, sexo_pos, nacimiento_pos, personas_cargo, n_hijos, " +
-                            "estado_civil, escolaridad_pos, profecion_pos, salud_pos, nom_pos, " +
-                            "placa, id_poseedor, tipo_documento) " +
+                if(consulta.equals("Actualizar")){
+                    preparedStatement = con.prepareStatement(
+                        "UPDATE public.propietarios " +
+                            "SET tipo_id=?, ape1_pro=?, ape2_pro=?, dir_pro=?, estrato_pro=?, " +
+                                "ciudad_pro=?, licencia=?, sexo_pro=?, nacimiento_pro=?, personas_cargo=?, " +
+                                "n_hijos=?, estado_civil=?, escolaridad_pro=?, profecion_pro=?, " +
+                                "salud_pro=?, nom_pro=?, placa=?, id_propietario=?, tipo_documento=?" +
+                            "WHERE id_propietario = ?;"
+                    );
+                    preparedStatement.setLong(20, MP.getIdPropietario());
+                }else{
+                    preparedStatement = con.prepareStatement(
+                        "INSERT INTO public.propietarios(" +
+                            "tipo_id, ape1_pro, ape2_pro, dir_pro, estrato_pro, ciudad_pro, " +
+                            "licencia, sexo_pro, nacimiento_pro, personas_cargo, n_hijos, " +
+                            "estado_civil, escolaridad_pro, profecion_pro, salud_pro, nom_pro, " +
+                            "placa, id_propietario, tipo_documento) " +
                         "VALUES (?, ?, ?, ?, ?, ?, " +
                             "?, ?, ?, ?, ?, " +
                             "?, ?, ?, ?, ?, " +
                             "?, ?, ?);"
-                );
+                    );
+                }
                 if(MP.getTipoId() != 0){
                     preparedStatement.setLong(1, MP.getTipoId());
                 }else{
@@ -232,7 +246,7 @@ public class ControladorPropietario {
                 if(!MP.getNacimientoPro().equals("")){
                     preparedStatement.setString(9, MP.getNacimientoPro());
                 }else{
-                    preparedStatement.setNull(9, java.sql.Types.VARCHAR);
+                    preparedStatement.setNull(9, java.sql.Types.DATE);
                 }
                 if(MP.getPersonasCargo() != 0){
                     preparedStatement.setInt(10, MP.getPersonasCargo());
@@ -292,7 +306,8 @@ public class ControladorPropietario {
                 
                 return r;
             }catch(SQLException e){
-                System.err.println("error");
+                System.err.println(e.getMessage());
+                e.printStackTrace();
             }
             
         }
