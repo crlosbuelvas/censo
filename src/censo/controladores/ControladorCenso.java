@@ -51,6 +51,25 @@ public class ControladorCenso {
             }
             
         }
+        if(consulta.equals("SelectForId")){
+            try{
+                preparedStatement = con.prepareStatement("SELECT * FROM public.censo WHERE n_censo = ?;");
+                preparedStatement.setLong(1, MC.getNCenso());
+                
+                resultSet = preparedStatement.executeQuery();
+                while(resultSet.next()){
+                    MC.setNCenso(resultSet.getLong("n_censo"));
+                }
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+                
+                return MC;
+            }catch(SQLException e){
+                System.err.println("error en SelectUltimo");
+            }
+            
+        }
         return null;
     }
     

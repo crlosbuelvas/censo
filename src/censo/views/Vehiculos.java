@@ -143,13 +143,13 @@ public class Vehiculos extends javax.swing.JPanel {
 
         jLabel5.setText("Clase de Vehiculo");
 
-        clase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Motoxicletas", "Carros", "Busetas", "Camiones" }));
+        clase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOTOXICLETA", "CARROS", "BUSETAS", "CAMIONES" }));
 
         jLabel6.setText("Tipo de Servicio");
 
         jLabel17.setText("N° de Chasis");
 
-        servicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Particular", "Publico", "Diplomatico", "Carga" }));
+        servicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PARTICULAR", "PUPLICO", "DIPLOMATICO", "CARGA" }));
         servicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 servicioActionPerformed(evt);
@@ -181,7 +181,7 @@ public class Vehiculos extends javax.swing.JPanel {
         extracontactual.add(extracontractual2);
         extracontractual2.setText("NO");
 
-        uso_vehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mototaxi", "Mensajeria", "M.D Transporte", "Otro" }));
+        uso_vehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOTOTAXI", "MENSAJERIA", "M.D TRANSPORTE", "OTRO" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -468,6 +468,66 @@ public class Vehiculos extends javax.swing.JPanel {
         MV.setVPago(v_pago.getText());
         
         return MV;
+    }
+    
+    public void setActive(){
+        cilindraje.setEnabled(!cilindraje.isEnabled());
+        clase.setEnabled(!clase.isEnabled());
+        color.setEnabled(!color.isEnabled());
+        extracontractual1.setEnabled(!extracontractual1.isEnabled());
+        extracontractual2.setEnabled(!extracontractual2.isEnabled());
+        fecha_censo.setEnabled(!fecha_censo.isEnabled());
+        fecha_de_pago.setEnabled(!fecha_de_pago.isEnabled());
+        jScrollPane1.setEnabled(!jScrollPane1.isEnabled());
+        jSeparator1.setEnabled(!jSeparator1.isEnabled());
+        linea.setEnabled(!linea.isEnabled());
+        marca.setEnabled(!marca.isEnabled());
+        modelo.setEnabled(!modelo.isEnabled());
+        n_censo.setEnabled(!n_censo.isEnabled());
+        n_chasis.setEnabled(!n_chasis.isEnabled());
+        n_licencia.setEnabled(!n_licencia.isEnabled());
+        n_motor.setEnabled(!n_motor.isEnabled());
+        n_recibo.setEnabled(!n_recibo.isEnabled());
+        o_transito.setEnabled(!o_transito.isEnabled());
+        observacion.setEnabled(!observacion.isEnabled());
+        placa.setEnabled(!placa.isEnabled());
+        servicio.setEnabled(!servicio.isEnabled());
+        soat1.setEnabled(!soat1.isEnabled());
+        soat2.setEnabled(!soat2.isEnabled());
+        tecno1.setEnabled(!tecno1.isEnabled());
+        tecno2.setEnabled(!tecno2.isEnabled());
+        uso_vehiculo.setEnabled(!uso_vehiculo.isEnabled());
+        v_pago.setEnabled(!v_pago.isEnabled());
+    }
+    
+    public void setActive(boolean estado){
+        cilindraje.setEnabled(estado);
+        clase.setEnabled(estado);
+        color.setEnabled(estado);
+        extracontractual1.setEnabled(estado);
+        extracontractual2.setEnabled(estado);
+        fecha_censo.setEnabled(estado);
+        fecha_de_pago.setEnabled(estado);
+        jScrollPane1.setEnabled(estado);
+        jSeparator1.setEnabled(estado);
+        linea.setEnabled(estado);
+        marca.setEnabled(estado);
+        modelo.setEnabled(estado);
+        n_censo.setEnabled(estado);
+        n_chasis.setEnabled(estado);
+        n_licencia.setEnabled(estado);
+        n_motor.setEnabled(estado);
+        n_recibo.setEnabled(estado);
+        o_transito.setEnabled(estado);
+        observacion.setEnabled(estado);
+        placa.setEnabled(estado);
+        servicio.setEnabled(estado);
+        soat1.setEnabled(estado);
+        soat2.setEnabled(estado);
+        tecno1.setEnabled(estado);
+        tecno2.setEnabled(estado);
+        uso_vehiculo.setEnabled(estado);
+        v_pago.setEnabled(estado);
     }
     
     private ModeloVeiculo MV;

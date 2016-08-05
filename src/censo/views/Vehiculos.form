@@ -432,10 +432,10 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value="Motoxicletas"/>
-            <StringItem index="1" value="Carros"/>
-            <StringItem index="2" value="Busetas"/>
-            <StringItem index="3" value="Camiones"/>
+            <StringItem index="0" value="MOTOXICLETA"/>
+            <StringItem index="1" value="CARROS"/>
+            <StringItem index="2" value="BUSETAS"/>
+            <StringItem index="3" value="CAMIONES"/>
           </StringArray>
         </Property>
       </Properties>
@@ -459,10 +459,10 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value="Particular"/>
-            <StringItem index="1" value="Publico"/>
-            <StringItem index="2" value="Diplomatico"/>
-            <StringItem index="3" value="Carga"/>
+            <StringItem index="0" value="PARTICULAR"/>
+            <StringItem index="1" value="PUPLICO"/>
+            <StringItem index="2" value="DIPLOMATICO"/>
+            <StringItem index="3" value="CARGA"/>
           </StringArray>
         </Property>
       </Properties>
@@ -533,10 +533,10 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value="Mototaxi"/>
-            <StringItem index="1" value="Mensajeria"/>
-            <StringItem index="2" value="M.D Transporte"/>
-            <StringItem index="3" value="Otro"/>
+            <StringItem index="0" value="MOTOTAXI"/>
+            <StringItem index="1" value="MENSAJERIA"/>
+            <StringItem index="2" value="M.D TRANSPORTE"/>
+            <StringItem index="3" value="OTRO"/>
           </StringArray>
         </Property>
       </Properties>

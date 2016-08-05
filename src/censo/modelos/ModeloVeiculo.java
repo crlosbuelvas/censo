@@ -82,7 +82,7 @@ public class ModeloVeiculo {
     public void setNRecibo(String n_recibo){ this.n_recibo = n_recibo.toUpperCase(); }
     public void setVPago(String v_pago){ this.v_pago = v_pago.toUpperCase(); }
     public void setUsoVehiculo(String uso_vehiculo){ this.uso_vehiculo = uso_vehiculo.toUpperCase(); }
-    public void setObservacion(String observacion){ this.servicio = observacion.toUpperCase(); }
+    public void setObservacion(String observacion){ this.observacion = observacion.toUpperCase(); }
     public void setIdPropietario(long id_propietario){ this.cilindraje = id_propietario; }
     public void setIdPoseedor(long id_poseedor){ this.id_poseedor = id_poseedor; }
     public void setCodConductor(long cod_conductor){ this.cod_conductor = cod_conductor; }
@@ -107,7 +107,7 @@ public class ModeloVeiculo {
     public String getNRecibo(){ return this.n_recibo; }
     public String getVPago(){ return this.v_pago; }
     public String getUsoVehiculo(){ return this.uso_vehiculo; }
-    public String getObservacion(){ return this.servicio; }
+    public String getObservacion(){ return this.observacion; }
     public long getIdPropietario(){ return this.cilindraje; }
     public long getIdPoseedor(){ return this.id_poseedor; }
     public long getCodConductor(){ return this.cod_conductor; }

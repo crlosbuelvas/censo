@@ -5,6 +5,8 @@
  */
 package censo.views;
 
+import censo.controladores.BorrarCenso;
+import censo.controladores.ControladorConductor;
 import censo.controladores.ControladorImagen;
 import censo.controladores.ControladorPoseedor;
 import censo.controladores.ControladorPropietario;
@@ -80,40 +82,56 @@ public class RompeCabezas extends javax.swing.JPanel {
         add(conductores);
         add(mandos);
         
+        MConductor = new ModeloConductor[5];
+        
         VentanaBuscar v = new VentanaBuscar(ventana, this);
     }
     
     public void buscar(){
-        MImagen = new ModeloImagen();
-        MImagen.setIdImagen(n_censo);
-        ControladorImagen CI = new ControladorImagen(MImagen);
-        MImagen = CI.Select("SelectForId");
-        
-        try {
-            camara.setImagenByte(MImagen.getImagenBytea());
-            System.err.println(MImagen.getImagenBytea());
-        } catch (IOException ex) {
-            Logger.getLogger(RompeCabezas.class.getName()).log(Level.SEVERE, null, ex);
+        if(n_censo != 0){
+            MImagen = new ModeloImagen();
+            MImagen.setIdImagen(n_censo);
+            ControladorImagen CI = new ControladorImagen(MImagen);
+            MImagen = CI.Select("SelectForId");
+
+            try {
+                camara.setImagenByte(MImagen.getImagenBytea());
+                System.err.println(MImagen.getImagenBytea());
+            } catch (IOException ex) {
+                Logger.getLogger(RompeCabezas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            MPropietario = new ModeloPropietario();
+            MPropietario.setIdPropietario(n_censo);
+            ControladorPropietario CPr = new ControladorPropietario(MPropietario);
+            MPropietario = CPr.Select("SelectForId");
+            propietario.setModelo(MPropietario);
+
+            MPoseedor = new ModeloPoseedor();
+            MPoseedor.setIdPoseedor(n_censo);
+            ControladorPoseedor CPo = new ControladorPoseedor(MPoseedor);
+            System.out.println(MPoseedor.getIdPoseedor());
+            MPoseedor = CPo.Select("SelectForId");
+            poseedor.setModelo(MPoseedor);
+
+            MVehiculo = new ModeloVeiculo();
+            MVehiculo.setNCenso(n_censo);
+            ControladorVehiculo CV = new ControladorVehiculo(MVehiculo);
+            MVehiculo = CV.Select("SelectForId");
+            veiculo.setModel(MVehiculo);
+            
+            for(int i = 0; i < 5; i++){
+                MConductor[i] = new ModeloConductor();
+                MConductor[i].setIdVehiculo(n_censo);
+            }
+            ControladorConductor CC = new ControladorConductor();
+            CC.setModelo(MConductor[0]);
+            MConductor = CC.Select("SelectLote");
+            
+            conductores.setConductores(MConductor);
+            
+            activar(false);
         }
-        
-        MPropietario = new ModeloPropietario();
-        MPropietario.setIdPropietario(n_censo);
-        ControladorPropietario CPr = new ControladorPropietario(MPropietario);
-        MPropietario = CPr.Select("SelectForId");
-        propietario.setModelo(MPropietario);
-        
-        MPoseedor = new ModeloPoseedor();
-        MPoseedor.setIdPoseedor(n_censo);
-        ControladorPoseedor CPo = new ControladorPoseedor(MPoseedor);
-        System.out.println(MPoseedor.getIdPoseedor());
-        MPoseedor = CPo.Select("SelectForId");
-        poseedor.setModelo(MPoseedor);
-        
-        MVehiculo = new ModeloVeiculo();
-        MVehiculo.setNCenso(n_censo);
-        ControladorVehiculo CV = new ControladorVehiculo(MVehiculo);
-        MVehiculo = CV.Select("SelectForId");
-        veiculo.setModel(MVehiculo);
     }
     
     public void guardar(){
@@ -172,11 +190,45 @@ public class RompeCabezas extends javax.swing.JPanel {
             susses3 = CV.InsertarActualizar("Insertar");
         }
         
+        MConductor = conductores.getConductores();
+        for(int i = 0; i < 5; i++){
+            MConductor[i].setIdVehiculo(n_censo);
+            if(MConductor[i].getIdConductor() != 0){
+                ControladorConductor CC = new ControladorConductor();
+                CC.setModelo(MConductor[i]);
+                ModeloConductor[] MConductor2 = CC.Select("SelectForId");
+                CC = new ControladorConductor();
+                CC.setModelo(MConductor[i]);
+                if (MConductor2[0].getCodConductor() != 0){
+                    CC.InsertarActualizar("Actualizar");
+                }else {
+                    CC.InsertarActualizar("Insertar");
+                }
+            }
+        }
+        
         if (susses1 != 3 && susses2 != 3 && susses3 != 3) {
             JOptionPane.showMessageDialog(null, "censo actualizado de manera exitosa", "info", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            JOptionPane.showMessageDialog(null, "propietario no actualizado", "info", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "censo no actualizado", "info", JOptionPane.WARNING_MESSAGE);
         }
+        
+        System.gc();
+    }
+    
+    public void Borrar(){
+        BorrarCenso bc = new BorrarCenso(n_censo);
+    }
+    
+    public void activar(){
+        veiculo.setActive();
+        poseedor.setActive();
+        propietario.setActive();
+    }
+    public void activar(boolean estado){
+        veiculo.setActive(estado);
+        poseedor.setActive(estado);
+        propietario.setActive(estado);
     }
     
     /**

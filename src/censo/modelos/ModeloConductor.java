@@ -10,6 +10,8 @@ package censo.modelos;
  * @author Admin
  */
 public class ModeloConductor {
+    
+    private long id_vehiculo;
     private long cod_conductor;
     private String nit;
     private long id_conductor;
@@ -18,6 +20,7 @@ public class ModeloConductor {
     private String nom_con;
     
     public ModeloConductor(){
+        id_vehiculo = 0;
         cod_conductor = 0;
         nit = "";
         id_conductor = 0;
@@ -26,6 +29,7 @@ public class ModeloConductor {
         nom_con = "";
     }
     
+    public void setIdVehiculo(long id_vehiculo){ this.id_vehiculo = id_vehiculo; }
     public void setCodConductor(long cod_conductor){ this.cod_conductor = cod_conductor; }
     public void setNit(String nit){ this.nit = nit.toUpperCase(); }
     public void setIdConductor(long id_conductor){ this.id_conductor = id_conductor; }
@@ -33,6 +37,7 @@ public class ModeloConductor {
     public void setApe2Con(String ape2_con){ this.ape2_con = ape2_con.toUpperCase(); }
     public void setNomCon(String nom_con){ this.nom_con = nom_con.toUpperCase(); }
     
+    public long getIdVehiculo(){ return this.id_vehiculo; }
     public long getCodConductor(){ return this.cod_conductor; }
     public String getNit(){ return this.nit; }
     public long getIdConductor(){ return this.id_conductor; }

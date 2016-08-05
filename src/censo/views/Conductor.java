@@ -93,18 +93,17 @@ public class Conductor extends javax.swing.JPanel {
         ModeloConductor[] MCA = new ModeloConductor[5];
         
         TableModel tableModel = jTable1.getModel();
-        int cols = tableModel.getColumnCount();
-        int fils = tableModel.getRowCount();
 
-        for(int i=0; i<fils; i++) {
+        for(int i=0; i < 5; i++) {
             MCA[i] = new ModeloConductor();
             if(tableModel.getValueAt(i,2) != null){
-                MCA[i].setApe1Con(tableModel.getValueAt(i,2).toString().split(" ")[0]);
+                MCA[i].setApe1Con(tableModel.getValueAt(i,2).toString());
                 try{
+                    MCA[i].setApe1Con(tableModel.getValueAt(i,2).toString().split(" ")[0]);
                     MCA[i].setApe2Con(tableModel.getValueAt(i,2).toString().split(" ")[1]);
                 }catch(Exception e){
-                    System.out.println("el conductor " + tableModel.getValueAt(i,2).toString().split(" ")[0] +
-                            " no tiene segundo nombre");
+                    System.out.println("el conductor " + tableModel.getValueAt(i,2).toString() +
+                            " no tiene segundo apellido");
                 }
             }
             if(tableModel.getValueAt(i,1) != null){
@@ -122,7 +121,7 @@ public class Conductor extends javax.swing.JPanel {
     
     public void setConductores(ModeloConductor[] MC){
         
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        setData(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {MC[0].getNit(), MC[0].getNomCon(), MC[0].getApe1Con()+" "+MC[0].getApe2Con(), MC[0].getIdConductor()},
                 {MC[1].getNit(), MC[1].getNomCon(), MC[1].getApe1Con()+" "+MC[1].getApe2Con(), MC[1].getIdConductor()},

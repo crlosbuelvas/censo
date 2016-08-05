@@ -26,9 +26,13 @@ public class ImagenView extends JPanel{
     }
     
     public void setImagenByte(byte[] img) throws IOException{
-        InputStream in = new ByteArrayInputStream(img);
-        this.img = ImageIO.read(in);
-        repaint();
+        try{
+            InputStream in = new ByteArrayInputStream(img);
+            this.img = ImageIO.read(in);
+            repaint();
+        }catch(NullPointerException e){
+            System.out.println(e.getMessage());
+        }
     }
     
     @Override

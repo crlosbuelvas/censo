@@ -333,10 +333,57 @@ public class Propietario extends javax.swing.JPanel {
         personas_cargo.setText(String.valueOf(MP.getPersonasCargo()));
         profecion_pro.setText(MP.getProfecionPro());
         salud_pro.setSelectedItem(MP.getSaludPro());
-        sexo_pro.setSelectedItem(MP.getSexoPro());
+        if(MP.getSexoPro().equals("M")){
+            sexo_pro.setSelectedItem("Masculino");
+        } else if (MP.getSexoPro().equals("F")) {
+            sexo_pro.setSelectedItem("Femenino");
+        } else {
+            sexo_pro.setSelectedItem("Otros");
+        }
         tipo_id.setText(MP.getTipoDocumento());
     }
-
+    
+    public void setActive(){
+        Licencia1.setEnabled(!Licencia1.isEnabled());
+        ape1_pro.setEnabled(!ape1_pro.isEnabled());
+        ape2_pro.setEnabled(!ape2_pro.isEnabled());
+        ciudad_pro.setEnabled(!ciudad_pro.isEnabled());
+        dir_pro.setEnabled(!dir_pro.isEnabled());
+        escolaridad_pro.setEnabled(!escolaridad_pro.isEnabled());
+        estado_civil.setEnabled(!estado_civil.isEnabled());
+        estrato_pro.setEnabled(!estrato_pro.isEnabled());
+        id_propietario.setEnabled(!id_propietario.isEnabled());
+        licencia2.setEnabled(!licencia2.isEnabled());
+        n_hijos.setEnabled(!n_hijos.isEnabled());
+        nacimiento_pro.setEnabled(!nacimiento_pro.isEnabled());
+        nom_pro.setEnabled(!nom_pro.isEnabled());
+        personas_cargo.setEnabled(!personas_cargo.isEnabled());
+        profecion_pro.setEnabled(!profecion_pro.isEnabled());
+        salud_pro.setEnabled(!salud_pro.isEnabled());
+        sexo_pro.setEnabled(!sexo_pro.isEnabled());
+        tipo_id.setEnabled(!tipo_id.isEnabled());
+    }
+    public void setActive(boolean estado){
+        Licencia1.setEnabled(estado);
+        ape1_pro.setEnabled(estado);
+        ape2_pro.setEnabled(estado);
+        ciudad_pro.setEnabled(estado);
+        dir_pro.setEnabled(estado);
+        escolaridad_pro.setEnabled(estado);
+        estado_civil.setEnabled(estado);
+        estrato_pro.setEnabled(estado);
+        id_propietario.setEnabled(estado);
+        licencia2.setEnabled(estado);
+        n_hijos.setEnabled(estado);
+        nacimiento_pro.setEnabled(estado);
+        nom_pro.setEnabled(estado);
+        personas_cargo.setEnabled(estado);
+        profecion_pro.setEnabled(estado);
+        salud_pro.setEnabled(estado);
+        sexo_pro.setEnabled(estado);
+        tipo_id.setEnabled(estado);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton Licencia1;
     private javax.swing.JTextField ape1_pro;
