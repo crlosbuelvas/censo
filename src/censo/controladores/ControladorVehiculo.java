@@ -132,7 +132,7 @@ public class ControladorVehiculo {
 
                     }
                     try{
-                        MV.setUso(resultSet.getString("uso_vehiculo"));
+                        MV.setUso(resultSet.getString("uso"));
                     }catch(NullPointerException e){
 
                     }
@@ -164,12 +164,10 @@ public class ControladorVehiculo {
                 if (consulta.equals("Actualizar")){
                     preparedStatement = con.prepareStatement(
                         "UPDATE public.vehiculos " +
-                            "SET n_censo=?, placa=?, clase=?, servicio=?, modelo=?, cilindraje=?, " +
+                                "SET n_censo=?, placa=?, clase=?, servicio=?, modelo=?, cilindraje=?, " +
                                 "color=?, marca=?, linea=?, n_motor=?, n_chasis=?, n_licencia=?, " +
                                 "o_transito=?, soat=?, tecno=?, extra=?, fecha_de_pago=?, n_recibo=?, " +
-                                "v_pago=?, uso_vehiculo=?, observacion=?, id_propietario=?, id_poseedor=?, " +
-                                "cod_conductor=? " +
-                            "WHERE n_censo = ?;"
+                                "v_pago=?, uso=?, observacion=? WHERE n_censo = ?;"
                     );
                     preparedStatement.setLong(25, MV.getNCenso());
                 }else{
@@ -177,12 +175,10 @@ public class ControladorVehiculo {
                         "INSERT INTO public.vehiculos(" +
                                 "n_censo, placa, clase, servicio, modelo, cilindraje, color, marca, " +
                                 "linea, n_motor, n_chasis, n_licencia, o_transito, soat, tecno, " +
-                                "extra, fecha_de_pago, n_recibo, v_pago, uso_vehiculo, observacion, " +
-                                "id_propietario, id_poseedor, cod_conductor) " +
+                                "extra, fecha_de_pago, n_recibo, v_pago, uso, observacion) " +
                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, " +
                                 "?, ?, ?, ?, ?, ?, ?, " +
-                                "?, ?, ?, ?, ?, ?, " +
-                                "?, ?, ?);"
+                                "?, ?, ?, ?, ?, ?);"
                     );
                 }
                 if(MV.getNCenso() != 0){

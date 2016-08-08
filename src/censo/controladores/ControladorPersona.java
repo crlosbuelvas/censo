@@ -35,34 +35,34 @@ public class ControladorPersona {
     public ModeloPersona Select(String consulta){
         if(consulta.equals("SelectForId")){
             try{
-                preparedStatement = con.prepareStatement("SELECT * FROM public.propietarios WHERE id_propietario = ?;");
+                preparedStatement = con.prepareStatement("SELECT * FROM public.propietarios WHERE n_censo = ?;");
                 preparedStatement.setLong(1, MP.getIdPersona());
                 
                 resultSet = preparedStatement.executeQuery();
                 
                 while(resultSet.next()){
                     try{
-                        MP.setApellido1(resultSet.getString("ape1_pro"));
+                        MP.setApellido1(resultSet.getString("apellido1"));
                     }catch(NullPointerException e){
                         
                     }
                     try{
-                        MP.setApellido2(resultSet.getString("ape2_pro"));
+                        MP.setApellido2(resultSet.getString("apellido2"));
                     }catch(NullPointerException e){
                         
                     }
                     try{
-                        MP.setCiudad(resultSet.getString("ciudad_pro"));
+                        MP.setCiudad(resultSet.getString("ciudad"));
                     }catch(NullPointerException e){
                         
                     }
                     try{
-                        MP.setDireccion(resultSet.getString("dir_pro"));
+                        MP.setDireccion(resultSet.getString("direccion"));
                     }catch(NullPointerException e){
                         
                     }
                     try{
-                        MP.setEscolaridad(resultSet.getString("escolaridad_pro"));
+                        MP.setEscolaridad(resultSet.getString("escolaridad"));
                     }catch(NullPointerException e){
                         
                     }
@@ -72,7 +72,7 @@ public class ControladorPersona {
                         
                     }
                     try{
-                        MP.setEstratoPro(resultSet.getInt("estrato_pro"));
+                        MP.setEstratoPro(resultSet.getInt("estrato"));
                     }catch(NullPointerException e){
                         
                     }
@@ -82,17 +82,17 @@ public class ControladorPersona {
                         
                     }
                     try{
-                        MP.setNacimiento(resultSet.getString("nacimiento_pro"));
+                        MP.setNacimiento(resultSet.getString("nacimiento"));
                     }catch(NullPointerException e){
                         
                     }
                     try{
-                        MP.setNombre(resultSet.getString("nom_pro"));
+                        MP.setNombre(resultSet.getString("nombre"));
                     }catch(NullPointerException e){
                         
                     }
                     try{
-                        MP.setPersonasCargo(resultSet.getInt("personas_cargo"));
+                        MP.setPersonasCargo(resultSet.getInt("personas_a_cargo"));
                     }catch(NullPointerException e){
                         
                     }
@@ -102,17 +102,17 @@ public class ControladorPersona {
                         
                     }
                     try{
-                        MP.setProfecion(resultSet.getString("profecion_pro"));
+                        MP.setProfecion(resultSet.getString("profecion"));
                     }catch(NullPointerException e){
                         
                     }
                     try{
-                        MP.setSalud(resultSet.getString("salud_pro"));
+                        MP.setSalud(resultSet.getString("salud"));
                     }catch(NullPointerException e){
                         
                     }
                     try{
-                        MP.setSexo(resultSet.getString("sexo_pro"));
+                        MP.setSexo(resultSet.getString("sexo"));
                     }catch(NullPointerException e){
                         
                     }
@@ -122,17 +122,17 @@ public class ControladorPersona {
                         
                     }
                     try{
-                        MP.setIdPersona(resultSet.getLong("id_propietario"));
+                        MP.setIdPersona(resultSet.getLong("n_censo"));
                     }catch(NullPointerException e){
                         
                     }
                     try{
-                        MP.setNumeroDeHijos(resultSet.getInt("n_hijos"));
+                        MP.setNumeroDeHijos(resultSet.getInt("numero_de_hijos"));
                     }catch(NullPointerException e){
                         
                     }
                     try{
-                        MP.setNumeroDeDocumento(resultSet.getLong("tipo_id"));
+                        MP.setNumeroDeDocumento(resultSet.getLong("numero_de_documento"));
                     }catch(NullPointerException e){
                         
                     }
@@ -158,7 +158,7 @@ public class ControladorPersona {
     public int InsertarActualizar(String consulta){
         if(consulta.equals("InsertInicial")){
             try{
-                preparedStatement = con.prepareStatement("INSERT INTO public.propietarios(id_propietario, tipo_id, ape1_pro, ape2_pro, nom_pro, tipo_documento) VALUES (?, ?, ?, ?, ?, ?);");
+                preparedStatement = con.prepareStatement("INSERT INTO public.propietarios(n_censo, numero_de_documento, apellido1, apellido2, nombre, tipo_documento) VALUES (?, ?, ?, ?, ?, ?);");
                 preparedStatement.setLong(1, MP.getIdPersona());
                 preparedStatement.setLong(2, MP.getNumeroDeDocumento());
                 preparedStatement.setString(3, MP.getApellido1());
@@ -183,20 +183,20 @@ public class ControladorPersona {
                 if(consulta.equals("Actualizar")){
                     preparedStatement = con.prepareStatement(
                         "UPDATE public.propietarios " +
-                            "SET tipo_id=?, ape1_pro=?, ape2_pro=?, dir_pro=?, estrato_pro=?, " +
-                                "ciudad_pro=?, licencia=?, sexo_pro=?, nacimiento_pro=?, personas_cargo=?, " +
-                                "n_hijos=?, estado_civil=?, escolaridad_pro=?, profecion_pro=?, " +
-                                "salud_pro=?, nom_pro=?, placa=?, id_propietario=?, tipo_documento=?" +
-                            "WHERE id_propietario = ?;"
+                            "SET numero_de_documento=?, apellido1=?, apellido2=?, direccion=?, estrato=?, " +
+                                "ciudad=?, licencia=?, sexo=?, nacimiento=?, personas_a_cargo=?, " +
+                                "numero_de_hijos=?, estado_civil=?, escolaridad=?, profecion=?, " +
+                                "salud=?, nombre=?, placa=?, n_censo=?, tipo_documento=?" +
+                            "WHERE n_censo = ?;"
                     );
                     preparedStatement.setLong(20, MP.getIdPersona());
                 }else{
                     preparedStatement = con.prepareStatement(
                         "INSERT INTO public.propietarios(" +
-                            "tipo_id, ape1_pro, ape2_pro, dir_pro, estrato_pro, ciudad_pro, " +
-                            "licencia, sexo_pro, nacimiento_pro, personas_cargo, n_hijos, " +
-                            "estado_civil, escolaridad_pro, profecion_pro, salud_pro, nom_pro, " +
-                            "placa, id_propietario, tipo_documento) " +
+                            "numero_de_documento, apellido1, apellido2, direccion, estrato, ciudad, " +
+                            "licencia, sexo, nacimiento, personas_a_cargo, numero_de_hijos, " +
+                            "estado_civil, escolaridad, profecion, salud, nombre, " +
+                            "placa, n_censo, tipo_documento) " +
                         "VALUES (?, ?, ?, ?, ?, ?, " +
                             "?, ?, ?, ?, ?, " +
                             "?, ?, ?, ?, ?, " +
