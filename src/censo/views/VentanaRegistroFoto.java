@@ -16,7 +16,7 @@ public class VentanaRegistroFoto extends javax.swing.JFrame {
     /**
      * Creates new form VentanRegistroFoto
      */
-    public VentanaRegistroFoto() {
+    public VentanaRegistroFoto(long usuario) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 System.out.println(info.getName());
@@ -42,7 +42,7 @@ public class VentanaRegistroFoto extends javax.swing.JFrame {
         
         setLocation(x, y);
         
-        rf = new RegistroFoto();
+        rf = new RegistroFoto(usuario);
         rf.setBounds(0, 0, 363, 350);
         
         add(rf);

@@ -13,7 +13,7 @@ public class ModeloReporte {
     private long id;
     private String tabla;
     private long clave_primaria;
-    private long estado;
+    private int estado;
     private String accion;
     private long usuario;
     
@@ -35,7 +35,7 @@ public class ModeloReporte {
     public void setClavePrimaria(long clave_primaria){
         this.clave_primaria = clave_primaria;
     }
-    public void setEstado(long estado){
+    public void setEstado(int estado){
         this.estado = estado;
     }
     public void setAccion(String accion){
@@ -54,7 +54,7 @@ public class ModeloReporte {
     public long getClavePrimaria(){
         return this.clave_primaria;
     }
-    public long getEstado(){
+    public int getEstado(){
         return this.estado;
     }
     public String getAccion(){

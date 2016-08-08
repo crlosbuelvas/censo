@@ -34,7 +34,7 @@ public class Camara extends JPanel implements Runnable, ActionListener {
     private Webcam w;
     
     private JButton tomar_foto;
-    private JButton reiniciar;
+    public JButton reiniciar;
     
     private final Dimension size;
     

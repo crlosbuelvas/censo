@@ -94,13 +94,10 @@ public class login extends javax.swing.JPanel {
         ControladorUsuario cu = new ControladorUsuario(mu);
         mu = cu.Select("SelectForLogin");
         if(mu != null){
-            if(mu.getCodPerfil() == 1){
+            if(mu.getCodPerfil() == 2){
                 login_v.setVisible(false);
-                VentanaRegistroFoto vf = new VentanaRegistroFoto();
-            }else if(mu.getCodPerfil() == 2){
-                login_v.setVisible(false);
-                VentanaPrincipal vp = new VentanaPrincipal(mu.getCodPerfil());
-            }else if(mu.getCodPerfil() == 3){
+                VentanaRegistroFoto vf = new VentanaRegistroFoto(mu.getIdUsuario());
+            }else if(mu.getCodPerfil() == 1 || mu.getCodPerfil() == 3){
                 login_v.setVisible(false);
                 VentanaPrincipal vp = new VentanaPrincipal(mu.getCodPerfil());
             }else{

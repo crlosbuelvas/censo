@@ -35,7 +35,7 @@ public class ControladorPersona {
     public ModeloPersona Select(String consulta){
         if(consulta.equals("SelectForId")){
             try{
-                preparedStatement = con.prepareStatement("SELECT * FROM public.propietarios WHERE n_censo = ?;");
+                preparedStatement = con.prepareStatement("SELECT * FROM public.persona WHERE n_censo = ?;");
                 preparedStatement.setLong(1, MP.getIdPersona());
                 
                 resultSet = preparedStatement.executeQuery();
@@ -136,7 +136,41 @@ public class ControladorPersona {
                     }catch(NullPointerException e){
                         
                     }
+                    try{
+                        MP.setTipoDePersona(resultSet.getInt("tipo_persona"));
+                    }catch(NullPointerException e){
+                        
+                    }
                     
+                    
+                    resultSet.close();
+                    preparedStatement.close();
+                    con.close();
+
+                    return MP;
+                }
+                
+                MP.setIdPersona(0);
+                return MP;
+            }catch(SQLException e){
+                System.err.println("error en SelectForId");
+            }
+            
+        }
+        if(consulta.equals("SelectId")){
+            try{
+                preparedStatement = con.prepareStatement("SELECT id_persona FROM public.persona WHERE n_censo = ? AND numero_de_documento = ?;");
+                preparedStatement.setLong(1, MP.getNCenso());
+                preparedStatement.setLong(2, MP.getNumeroDeDocumento());
+                
+                resultSet = preparedStatement.executeQuery();
+                
+                while(resultSet.next()){
+                    try{
+                        MP.setIdPersona(resultSet.getLong("id_persona"));
+                    }catch(NullPointerException e){
+                        
+                    }
                     
                     resultSet.close();
                     preparedStatement.close();
@@ -158,13 +192,14 @@ public class ControladorPersona {
     public int InsertarActualizar(String consulta){
         if(consulta.equals("InsertInicial")){
             try{
-                preparedStatement = con.prepareStatement("INSERT INTO public.propietarios(n_censo, numero_de_documento, apellido1, apellido2, nombre, tipo_documento) VALUES (?, ?, ?, ?, ?, ?);");
-                preparedStatement.setLong(1, MP.getIdPersona());
+                preparedStatement = con.prepareStatement("INSERT INTO public.persona(n_censo, numero_de_documento, apellido1, apellido2, nombre, tipo_documento, tipo_persona) VALUES (?, ?, ?, ?, ?, ?, ?);");
+                preparedStatement.setLong(1, MP.getNCenso());
                 preparedStatement.setLong(2, MP.getNumeroDeDocumento());
                 preparedStatement.setString(3, MP.getApellido1());
                 preparedStatement.setString(4, MP.getApellido2());
                 preparedStatement.setString(5, MP.getNom());
                 preparedStatement.setString(6, MP.getTipoDocumento());
+                preparedStatement.setInt(7, MP.getTipoDePersona());
                 
                 int r = preparedStatement.executeUpdate();
                 
@@ -182,25 +217,25 @@ public class ControladorPersona {
             try{
                 if(consulta.equals("Actualizar")){
                     preparedStatement = con.prepareStatement(
-                        "UPDATE public.propietarios " +
+                        "UPDATE public.persona " +
                             "SET numero_de_documento=?, apellido1=?, apellido2=?, direccion=?, estrato=?, " +
                                 "ciudad=?, licencia=?, sexo=?, nacimiento=?, personas_a_cargo=?, " +
                                 "numero_de_hijos=?, estado_civil=?, escolaridad=?, profecion=?, " +
-                                "salud=?, nombre=?, placa=?, n_censo=?, tipo_documento=?" +
-                            "WHERE n_censo = ?;"
+                                "salud=?, nombre=?, placa=?, n_censo=?, tipo_documento=? " +
+                            "WHERE n_censo = ? AND tipo_persona = ?;"
                     );
-                    preparedStatement.setLong(20, MP.getIdPersona());
+                    preparedStatement.setLong(20, MP.getNCenso());
                 }else{
                     preparedStatement = con.prepareStatement(
-                        "INSERT INTO public.propietarios(" +
+                        "INSERT INTO public.persona(" +
                             "numero_de_documento, apellido1, apellido2, direccion, estrato, ciudad, " +
                             "licencia, sexo, nacimiento, personas_a_cargo, numero_de_hijos, " +
                             "estado_civil, escolaridad, profecion, salud, nombre, " +
-                            "placa, n_censo, tipo_documento) " +
+                            "placa, n_censo, tipo_documento, tipo_persona) " +
                         "VALUES (?, ?, ?, ?, ?, ?, " +
                             "?, ?, ?, ?, ?, " +
                             "?, ?, ?, ?, ?, " +
-                            "?, ?, ?);"
+                            "?, ?, ?, ?);"
                     );
                 }
                 if(MP.getNumeroDeDocumento() != 0){
@@ -288,8 +323,8 @@ public class ControladorPersona {
                 }else{
                     preparedStatement.setNull(17, java.sql.Types.VARCHAR);
                 }
-                if(MP.getIdPersona()!= 0){
-                    preparedStatement.setLong(18, MP.getIdPersona());
+                if(MP.getNCenso() != 0){
+                    preparedStatement.setLong(18, MP.getNCenso());
                 }else{
                     preparedStatement.setNull(18, java.sql.Types.BIGINT);
                 }
@@ -297,6 +332,11 @@ public class ControladorPersona {
                     preparedStatement.setString(19, MP.getTipoDocumento());
                 }else{
                     preparedStatement.setNull(19, java.sql.Types.VARCHAR);
+                }
+                if(MP.getTipoDePersona() != 0){
+                    preparedStatement.setInt(20, MP.getTipoDePersona());
+                }else{
+                    preparedStatement.setNull(20, java.sql.Types.INTEGER);
                 }
                 
                 int r = preparedStatement.executeUpdate();

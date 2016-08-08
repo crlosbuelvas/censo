@@ -37,19 +37,19 @@ public class ControladorUsuario {
     public ModeloUsuario Select(String consulta){
         if(consulta.equals("SelectForLogin")){
             try{
-                preparedStatement = con.prepareStatement("SELECT id_usuario, cod_id, ape1_usuario, ape2_usuario, nom_usuario, " +
-                        "dir_usuario, tel_usuario, mail_usuario, cod_perfil, contrasena_usuario " +
-                        "FROM public.usuarios WHERE cod_id = ? AND contrasena_usuario = ?;");
+                preparedStatement = con.prepareStatement("SELECT id_usuario, numero_de_documento, apellido1, apellido2, nombre, " +
+                        "direccion, telefono, correo, cod_perfil, contrasena_usuario " +
+                        "FROM public.usuarios WHERE numero_de_documento = ? AND contrasena_usuario = ?;");
                 preparedStatement.setLong(1, ms.getNumeroDeDocumento());
                 preparedStatement.setString(2, ms.getContrasenaUsuario());
                 
                 resultSet = preparedStatement.executeQuery();
                 while(resultSet.next()){
-                    ms.setApellido1(resultSet.getString("ape1_usuario"));
-                    ms.setApellido2(resultSet.getString("ape2_usuario"));
-                    ms.setNombre(resultSet.getString("nom_usuario"));
+                    ms.setApellido1(resultSet.getString("apellido1"));
+                    ms.setApellido2(resultSet.getString("apellido2"));
+                    ms.setNombre(resultSet.getString("nombre"));
                     ms.setIdUsuario(resultSet.getLong("id_usuario"));
-                    ms.setNumeroDeDocumento(resultSet.getLong("cod_id"));
+                    ms.setNumeroDeDocumento(resultSet.getLong("numero_de_documento"));
                     ms.setCodPerfil(resultSet.getLong("cod_perfil"));
 
                     resultSet.close();
@@ -71,7 +71,7 @@ public class ControladorUsuario {
     public int InsertarActualizar(String consulta){
         if(consulta.equals("Insert")){
             try{
-                preparedStatement = con.prepareStatement("INSERT INTO public.usuarios(cod_id, ape1_usuario, ape2_usuario, nom_usuario, dir_usuario, tel_usuario, mail_usuario, cod_perfil, contrasena_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+                preparedStatement = con.prepareStatement("INSERT INTO public.usuarios(numero_de_documento, apellido1, apellido2, nombre, direccion, telefono, correo, cod_perfil, contrasena_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
                 preparedStatement.setLong(1, ms.getNumeroDeDocumento());
                 preparedStatement.setString(2, ms.getApellido1());
                 preparedStatement.setString(3, ms.getApellido2());

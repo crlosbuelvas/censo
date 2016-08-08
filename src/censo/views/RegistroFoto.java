@@ -8,9 +8,11 @@ package censo.views;
 import censo.controladores.ControladorCenso;
 import censo.controladores.ControladorImagen;
 import censo.controladores.ControladorPersona;
+import censo.controladores.ControladorReporte;
 import censo.modelos.ModeloCenso;
 import censo.modelos.ModeloImagen;
 import censo.modelos.ModeloPersona;
+import censo.modelos.ModeloReporte;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 
@@ -23,7 +25,10 @@ public class RegistroFoto extends javax.swing.JPanel {
     /**
      * Creates new form Inicial
      */
-    public RegistroFoto() {
+    long usuario;
+    
+    public RegistroFoto(long usuario) {
+        this.usuario = usuario;
         //inicializamos los componentes del panel
         initComponents();
         
@@ -224,6 +229,7 @@ public class RegistroFoto extends javax.swing.JPanel {
         ape2_pro.setText("");
         nom_pro.setText("");
         tipo_id.setText("");
+        camara.reiniciar.doClick();
     }
     
     private void ape1_proActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ape1_proActionPerformed
@@ -255,39 +261,46 @@ public class RegistroFoto extends javax.swing.JPanel {
             }
             
             ModeloImagen MI = new ModeloImagen();
-            MI.setNCenso(Integer.parseInt(n_censo.getText()));
+            MI.setNCenso(Integer.parseInt(n_censo.getText()) - 1);
             MI.setNombre(nom_pro.getText() + " " + ape1_pro.getText() + " " + ape2_pro.getText());
             MI.setImagen(camara.GetImagenBytea());
             
             ControladorImagen CI = new ControladorImagen(MI);
             CI.InsertarActualizar("InsertInicial");
             
-            if(tipo_de_persona.getSelectedIndex() == 0){
-                ModeloPersona MP = new ModeloPersona();
-                MP.setIdPersona(Integer.parseInt(n_censo.getText()));
-                MP.setApellido1(ape1_pro.getText());
-                MP.setApellido2(ape2_pro.getText());
-                MP.setNombre(nom_pro.getText());
-                MP.setTipoDocumento(String.valueOf(tipo_de_documento.getSelectedItem()));
-                MP.setNumeroDeDocumento(Integer.parseInt(tipo_id.getText()));
+            ModeloPersona MP = new ModeloPersona();
+            MP.setNCenso(Integer.parseInt(n_censo.getText()) - 1);
+            MP.setApellido1(ape1_pro.getText());
+            MP.setApellido2(ape2_pro.getText());
+            MP.setNombre(nom_pro.getText());
+            MP.setTipoDocumento(String.valueOf(tipo_de_documento.getSelectedItem()));
+            MP.setNumeroDeDocumento(Integer.parseInt(tipo_id.getText()));
+            MP.setTipoDePersona(tipo_de_persona.getSelectedIndex()+1);
+
+            ControladorPersona CP = new ControladorPersona(MP);
+            CP.InsertarActualizar("InsertInicial");
+            
+            MP = new ModeloPersona();
+            MP.setNCenso(Integer.parseInt(n_censo.getText()) - 1);
+            MP.setNumeroDeDocumento(Integer.parseInt(tipo_id.getText()));
+            CP = new ControladorPersona(MP);
+            MP = CP.Select("SelectId");
+            System.out.println(MP.getIdPersona());
+            if (MP.getIdPersona() != 0){
+                ModeloReporte  MR = new ModeloReporte();
+                MR.setTabla("persona");
+                MR.setAccion("insertar");
+                MR.setEstado(1);
+                MR.setClavePrimaria(MP.getIdPersona());
+                MR.setUsuario(usuario);
                 
-                ControladorPersona CP = new ControladorPersona(MP);
-                CP.InsertarActualizar("InsertInicial");
-                
-            }else if(tipo_de_persona.getSelectedIndex() == 1){
-                ModeloPersona MP = new ModeloPersona();
-                MP.setIdPersona(Integer.parseInt(n_censo.getText()));
-                MP.setApellido1(ape1_pro.getText());
-                MP.setApellido2(ape2_pro.getText());
-                MP.setNombre(nom_pro.getText());
-                MP.setTipoDocumento(String.valueOf(tipo_de_documento.getSelectedItem()));
-                MP.setNumeroDeDocumento(Integer.parseInt(tipo_id.getText()));
-                
-                ControladorPersona CP = new ControladorPersona(MP);
-                CP.InsertarActualizar("InsertInicial");
-                
+                ControladorReporte CR = new ControladorReporte(MR);
+                CR.InsertarActualizar("Insert");
             }
-            JOptionPane.showMessageDialog(null, "censo n°:" + n_censo.getText() + "\n el registro a sido exitoso");
+            
+            JOptionPane.showMessageDialog(null, "censo n°: "
+                    + String.valueOf(Integer.parseInt(n_censo.getText()) - 1)
+                    + "\n el registro a sido exitoso");
         }
         Borrar();
         SelectCenso();

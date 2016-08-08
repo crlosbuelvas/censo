@@ -35,7 +35,7 @@ public class ControladorImagen {
     public ModeloImagen Select(String consulta){
         if(consulta.equals("SelectForId")){
             try{
-                preparedStatement = con.prepareStatement("SELECT n_censo, nombre, imagen FROM public.propietario_imagen WHERE n_censo = ?;");
+                preparedStatement = con.prepareStatement("SELECT n_censo, nombre, imagen FROM public.persona_imagen WHERE n_censo = ?;");
                 preparedStatement.setLong(1, MI.getNCenso());
                 
                 resultSet = preparedStatement.executeQuery();
@@ -65,7 +65,7 @@ public class ControladorImagen {
     public int InsertarActualizar(String consulta){
         if(consulta.equals("InsertInicial")){
             try{
-                preparedStatement = con.prepareStatement("INSERT INTO public.propietario_imagen(n_censo, nombre, imagen) VALUES (?, ?, ?);");
+                preparedStatement = con.prepareStatement("INSERT INTO public.persona_imagen(n_censo, nombre, imagen) VALUES (?, ?, ?);");
                 preparedStatement.setLong(1, MI.getNCenso());
                 preparedStatement.setString(2, MI.getNombre());
                 preparedStatement.setBytes(3, MI.getImagenBytea());
