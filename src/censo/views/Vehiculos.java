@@ -426,7 +426,7 @@ public class Vehiculos extends javax.swing.JPanel {
             tecno1.setSelected(false);
             tecno2.setSelected(true);
         }
-        uso_vehiculo.setSelectedItem(MV.getUsoVehiculo());
+        uso_vehiculo.setSelectedItem(MV.getUso());
         v_pago.setText(MV.getVPago());
     }
     
@@ -464,7 +464,7 @@ public class Vehiculos extends javax.swing.JPanel {
         }else{
             MV.setTecno("NO");
         }
-        MV.setUsoVehiculo(uso_vehiculo.getSelectedItem().toString());
+        MV.setUso(uso_vehiculo.getSelectedItem().toString());
         MV.setVPago(v_pago.getText());
         
         return MV;

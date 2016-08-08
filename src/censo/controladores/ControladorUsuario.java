@@ -40,16 +40,16 @@ public class ControladorUsuario {
                 preparedStatement = con.prepareStatement("SELECT id_usuario, cod_id, ape1_usuario, ape2_usuario, nom_usuario, " +
                         "dir_usuario, tel_usuario, mail_usuario, cod_perfil, contrasena_usuario " +
                         "FROM public.usuarios WHERE cod_id = ? AND contrasena_usuario = ?;");
-                preparedStatement.setLong(1, ms.getCodId());
+                preparedStatement.setLong(1, ms.getNumeroDeDocumento());
                 preparedStatement.setString(2, ms.getContrasenaUsuario());
                 
                 resultSet = preparedStatement.executeQuery();
                 while(resultSet.next()){
-                    ms.setApe1Usuario(resultSet.getString("ape1_usuario"));
-                    ms.setApe2Usuario(resultSet.getString("ape2_usuario"));
-                    ms.setNomUsuario(resultSet.getString("nom_usuario"));
+                    ms.setApellido1(resultSet.getString("ape1_usuario"));
+                    ms.setApellido2(resultSet.getString("ape2_usuario"));
+                    ms.setNombre(resultSet.getString("nom_usuario"));
                     ms.setIdUsuario(resultSet.getLong("id_usuario"));
-                    ms.setCodId(resultSet.getLong("cod_id"));
+                    ms.setNumeroDeDocumento(resultSet.getLong("cod_id"));
                     ms.setCodPerfil(resultSet.getLong("cod_perfil"));
 
                     resultSet.close();
@@ -72,13 +72,13 @@ public class ControladorUsuario {
         if(consulta.equals("Insert")){
             try{
                 preparedStatement = con.prepareStatement("INSERT INTO public.usuarios(cod_id, ape1_usuario, ape2_usuario, nom_usuario, dir_usuario, tel_usuario, mail_usuario, cod_perfil, contrasena_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
-                preparedStatement.setLong(1, ms.getCodId());
-                preparedStatement.setString(2, ms.getApe1Usuario());
-                preparedStatement.setString(3, ms.getApe2Usuario());
-                preparedStatement.setString(4, ms.getNomUsuario());
-                preparedStatement.setString(5, ms.getDir());
-                preparedStatement.setLong(6, ms.getTelUsuario());
-                preparedStatement.setString(7, ms.getMailuUsuario());
+                preparedStatement.setLong(1, ms.getNumeroDeDocumento());
+                preparedStatement.setString(2, ms.getApellido1());
+                preparedStatement.setString(3, ms.getApellido2());
+                preparedStatement.setString(4, ms.getNombre());
+                preparedStatement.setString(5, ms.getDireccion());
+                preparedStatement.setLong(6, ms.getTelefono());
+                preparedStatement.setString(7, ms.getCorreo());
                 preparedStatement.setLong(8, ms.getCodPerfil());
                 preparedStatement.setString(9, ms.getContrasenaUsuario());
                 

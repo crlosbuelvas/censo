@@ -97,17 +97,17 @@ public class Conductor extends javax.swing.JPanel {
         for(int i=0; i < 5; i++) {
             MCA[i] = new ModeloConductor();
             if(tableModel.getValueAt(i,2) != null){
-                MCA[i].setApe1Con(tableModel.getValueAt(i,2).toString());
+                MCA[i].setApelllido1(tableModel.getValueAt(i,2).toString());
                 try{
-                    MCA[i].setApe1Con(tableModel.getValueAt(i,2).toString().split(" ")[0]);
-                    MCA[i].setApe2Con(tableModel.getValueAt(i,2).toString().split(" ")[1]);
+                    MCA[i].setApelllido1(tableModel.getValueAt(i,2).toString().split(" ")[0]);
+                    MCA[i].setApellido2(tableModel.getValueAt(i,2).toString().split(" ")[1]);
                 }catch(Exception e){
                     System.out.println("el conductor " + tableModel.getValueAt(i,2).toString() +
                             " no tiene segundo apellido");
                 }
             }
             if(tableModel.getValueAt(i,1) != null){
-                MCA[i].setNomCon(tableModel.getValueAt(i,1).toString());
+                MCA[i].setNombre(tableModel.getValueAt(i,1).toString());
             }
             if(tableModel.getValueAt(i,3) != null){
                 MCA[i].setIdConductor(Long.parseLong(tableModel.getValueAt(i,3).toString()));
@@ -123,11 +123,11 @@ public class Conductor extends javax.swing.JPanel {
         
         setData(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {MC[0].getNit(), MC[0].getNomCon(), MC[0].getApe1Con()+" "+MC[0].getApe2Con(), MC[0].getIdConductor()},
-                {MC[1].getNit(), MC[1].getNomCon(), MC[1].getApe1Con()+" "+MC[1].getApe2Con(), MC[1].getIdConductor()},
-                {MC[2].getNit(), MC[2].getNomCon(), MC[2].getApe1Con()+" "+MC[2].getApe2Con(), MC[2].getIdConductor()},
-                {MC[3].getNit(), MC[3].getNomCon(), MC[3].getApe1Con()+" "+MC[3].getApe2Con(), MC[3].getIdConductor()},
-                {MC[4].getNit(), MC[4].getNomCon(), MC[4].getApe1Con()+" "+MC[4].getApe2Con(), MC[4].getIdConductor()}
+                {MC[0].getNit(), MC[0].getNombre(), MC[0].getApellido1()+" "+MC[0].getApellido2(), MC[0].getIdConductor()},
+                {MC[1].getNit(), MC[1].getNombre(), MC[1].getApellido1()+" "+MC[1].getApellido2(), MC[1].getIdConductor()},
+                {MC[2].getNit(), MC[2].getNombre(), MC[2].getApellido1()+" "+MC[2].getApellido2(), MC[2].getIdConductor()},
+                {MC[3].getNit(), MC[3].getNombre(), MC[3].getApellido1()+" "+MC[3].getApellido2(), MC[3].getIdConductor()},
+                {MC[4].getNit(), MC[4].getNombre(), MC[4].getApellido1()+" "+MC[4].getApellido2(), MC[4].getIdConductor()}
             },
             new String [] {
                 "N.I.T", "Nombre", "Apellido", "N° de documento"

@@ -11,37 +11,37 @@ package censo.modelos;
  */
 public class ModeloConductor {
     
-    private long id_vehiculo;
-    private long cod_conductor;
-    private String nit;
     private long id_conductor;
-    private String ape1_con;
-    private String ape2_con;
-    private String nom_con;
+    private long n_censo;
+    private long cedula;
+    private String nit;
+    private String apllido1;
+    private String apellido2;
+    private String nombre;
     
     public ModeloConductor(){
-        id_vehiculo = 0;
-        cod_conductor = 0;
+        n_censo = 0;
+        cedula = 0;
         nit = "";
         id_conductor = 0;
-        ape1_con = "";
-        ape2_con = "";
-        nom_con = "";
+        apllido1 = "";
+        apellido2 = "";
+        nombre = "";
     }
     
-    public void setIdVehiculo(long id_vehiculo){ this.id_vehiculo = id_vehiculo; }
-    public void setCodConductor(long cod_conductor){ this.cod_conductor = cod_conductor; }
-    public void setNit(String nit){ this.nit = nit.toUpperCase(); }
     public void setIdConductor(long id_conductor){ this.id_conductor = id_conductor; }
-    public void setApe1Con(String ape1_con){ this.ape1_con = ape1_con.toUpperCase(); }
-    public void setApe2Con(String ape2_con){ this.ape2_con = ape2_con.toUpperCase(); }
-    public void setNomCon(String nom_con){ this.nom_con = nom_con.toUpperCase(); }
+    public void setNCenso(long n_censo){ this.n_censo = n_censo; }
+    public void setCedula(long cedula){ this.cedula = cedula; }
+    public void setNit(String nit){ this.nit = nit.toUpperCase(); }
+    public void setApelllido1(String apllido1){ this.apllido1 = apllido1.toUpperCase(); }
+    public void setApellido2(String apellido2){ this.apellido2 = apellido2.toUpperCase(); }
+    public void setNombre(String nombre){ this.nombre = nombre.toUpperCase(); }
     
-    public long getIdVehiculo(){ return this.id_vehiculo; }
-    public long getCodConductor(){ return this.cod_conductor; }
-    public String getNit(){ return this.nit; }
     public long getIdConductor(){ return this.id_conductor; }
-    public String getApe1Con(){ return this.ape1_con; }
-    public String getApe2Con(){ return this.ape2_con; }
-    public String getNomCon(){ return this.nom_con; }
+    public long getNCenso(){ return this.n_censo; }
+    public long getCedula(){ return this.cedula; }
+    public String getNit(){ return this.nit; }
+    public String getApellido1(){ return this.apllido1; }
+    public String getApellido2(){ return this.apellido2; }
+    public String getNombre(){ return this.nombre; }
 }

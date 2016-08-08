@@ -7,12 +7,10 @@ package censo.views;
 
 import censo.controladores.ControladorCenso;
 import censo.controladores.ControladorImagen;
-import censo.controladores.ControladorPoseedor;
-import censo.controladores.ControladorPropietario;
+import censo.controladores.ControladorPersona;
 import censo.modelos.ModeloCenso;
 import censo.modelos.ModeloImagen;
-import censo.modelos.ModeloPoseedor;
-import censo.modelos.ModeloPropietario;
+import censo.modelos.ModeloPersona;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 
@@ -257,7 +255,7 @@ public class RegistroFoto extends javax.swing.JPanel {
             }
             
             ModeloImagen MI = new ModeloImagen();
-            MI.setIdImagen(Integer.parseInt(n_censo.getText()));
+            MI.setNCenso(Integer.parseInt(n_censo.getText()));
             MI.setNombre(nom_pro.getText() + " " + ape1_pro.getText() + " " + ape2_pro.getText());
             MI.setImagen(camara.GetImagenBytea());
             
@@ -265,27 +263,27 @@ public class RegistroFoto extends javax.swing.JPanel {
             CI.InsertarActualizar("InsertInicial");
             
             if(tipo_de_persona.getSelectedIndex() == 0){
-                ModeloPropietario MP = new ModeloPropietario();
-                MP.setIdPropietario(Integer.parseInt(n_censo.getText()));
-                MP.setApe1Pro(ape1_pro.getText());
-                MP.setApe2Pro(ape2_pro.getText());
-                MP.setNomPro(nom_pro.getText());
+                ModeloPersona MP = new ModeloPersona();
+                MP.setIdPersona(Integer.parseInt(n_censo.getText()));
+                MP.setApellido1(ape1_pro.getText());
+                MP.setApellido2(ape2_pro.getText());
+                MP.setNombre(nom_pro.getText());
                 MP.setTipoDocumento(String.valueOf(tipo_de_documento.getSelectedItem()));
-                MP.setTipoId(Integer.parseInt(tipo_id.getText()));
+                MP.setNumeroDeDocumento(Integer.parseInt(tipo_id.getText()));
                 
-                ControladorPropietario CP = new ControladorPropietario(MP);
+                ControladorPersona CP = new ControladorPersona(MP);
                 CP.InsertarActualizar("InsertInicial");
                 
             }else if(tipo_de_persona.getSelectedIndex() == 1){
-                ModeloPoseedor MP = new ModeloPoseedor();
-                MP.setIdPoseedor(Integer.parseInt(n_censo.getText()));
-                MP.setApe1Pos(ape1_pro.getText());
-                MP.setApe2Pos(ape2_pro.getText());
-                MP.setNomPos(nom_pro.getText());
+                ModeloPersona MP = new ModeloPersona();
+                MP.setIdPersona(Integer.parseInt(n_censo.getText()));
+                MP.setApellido1(ape1_pro.getText());
+                MP.setApellido2(ape2_pro.getText());
+                MP.setNombre(nom_pro.getText());
                 MP.setTipoDocumento(String.valueOf(tipo_de_documento.getSelectedItem()));
-                MP.setTipoId(Integer.parseInt(tipo_id.getText()));
+                MP.setNumeroDeDocumento(Integer.parseInt(tipo_id.getText()));
                 
-                ControladorPoseedor CP = new ControladorPoseedor(MP);
+                ControladorPersona CP = new ControladorPersona(MP);
                 CP.InsertarActualizar("InsertInicial");
                 
             }

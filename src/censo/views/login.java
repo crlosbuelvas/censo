@@ -89,7 +89,7 @@ public class login extends javax.swing.JPanel {
     private void btn_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aceptarActionPerformed
         // TODO add your handling code here:
         ModeloUsuario mu = new ModeloUsuario();
-        mu.setCodId(Integer.parseInt(cod_id.getText()));
+        mu.setNumeroDeDocumento(Integer.parseInt(cod_id.getText()));
         mu.setContrasenaUsuario(String.valueOf(contrasena_usuario.getPassword(), 0, contrasena_usuario.getPassword().length));
         ControladorUsuario cu = new ControladorUsuario(mu);
         mu = cu.Select("SelectForLogin");

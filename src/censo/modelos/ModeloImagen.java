@@ -10,12 +10,12 @@ package censo.modelos;
  * @author Admin
  */
 public class ModeloImagen {
-    private long id_imagen = 0;
+    private long n_censo = 0;
     private String nombre = "";
     private byte[] imagen = null;
     
-    public void setIdImagen(long id_imagen){
-        this.id_imagen = id_imagen;
+    public void setNCenso(long n_censo){
+        this.n_censo = n_censo;
     }
     public void setNombre(String nombre){
         this.nombre = nombre;
@@ -24,8 +24,8 @@ public class ModeloImagen {
         this.imagen = imagen;
     }
     
-    public long getIdImagen(){
-        return id_imagen;
+    public long getNCenso(){
+        return n_censo;
     }
     public String getNombre(){
         return nombre;

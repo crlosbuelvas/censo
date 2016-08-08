@@ -132,27 +132,12 @@ public class ControladorVehiculo {
 
                     }
                     try{
-                        MV.setUsoVehiculo(resultSet.getString("uso_vehiculo"));
+                        MV.setUso(resultSet.getString("uso_vehiculo"));
                     }catch(NullPointerException e){
 
                     }
                     try{
                         MV.setObservacion(resultSet.getString("observacion"));
-                    }catch(NullPointerException e){
-
-                    }
-                    try{
-                        MV.setIdPropietario(resultSet.getLong("id_propietario"));
-                    }catch(NullPointerException e){
-
-                    }
-                    try{
-                        MV.setIdPoseedor(resultSet.getLong("id_poseedor"));
-                    }catch(NullPointerException e){
-
-                    }
-                    try{
-                        MV.setCodConductor(resultSet.getLong("cod_conductor"));
                     }catch(NullPointerException e){
 
                     }
@@ -295,8 +280,8 @@ public class ControladorVehiculo {
                 }else{
                     preparedStatement.setNull(19, java.sql.Types.VARCHAR);
                 }
-                if(!MV.getUsoVehiculo().equals("")){
-                    preparedStatement.setString(20, MV.getUsoVehiculo());
+                if(!MV.getUso().equals("")){
+                    preparedStatement.setString(20, MV.getUso());
                 }else{
                     preparedStatement.setNull(20, java.sql.Types.VARCHAR);
                 }
@@ -304,21 +289,6 @@ public class ControladorVehiculo {
                     preparedStatement.setString(21, MV.getObservacion());
                 }else{
                     preparedStatement.setNull(21, java.sql.Types.VARCHAR);
-                }
-                if(MV.getIdPropietario() != 0){
-                    preparedStatement.setLong(22, MV.getIdPropietario());
-                }else{
-                    preparedStatement.setNull(22, java.sql.Types.BIGINT);
-                }
-                if(MV.getIdPoseedor() != 0){
-                    preparedStatement.setLong(23, MV.getIdPoseedor());
-                }else{
-                    preparedStatement.setNull(23, java.sql.Types.BIGINT);
-                }
-                if(MV.getCodConductor() != 0){
-                    preparedStatement.setLong(24, MV.getCodConductor());
-                }else{
-                    preparedStatement.setNull(24, java.sql.Types.BIGINT);
                 }
                 
                 int r = preparedStatement.executeUpdate();

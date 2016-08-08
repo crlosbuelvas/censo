@@ -171,15 +171,15 @@ public class usuarios extends javax.swing.JPanel {
             !String.valueOf(contrasena_usuario.getPassword(), 0, contrasena_usuario.getPassword().length).equals("")){
         MU = new ModeloUsuario();
         try{
-            MU.setApe1Usuario(ape1_usuario.getText());
-            MU.setApe2Usuario(ape2_usuario.getText());
+            MU.setApellido1(ape1_usuario.getText());
+            MU.setApellido2(ape2_usuario.getText());
             MU.setCodPerfil(cod_perfil.getSelectedIndex()+1);
             MU.setContrasenaUsuario(String.valueOf(contrasena_usuario.getPassword(), 0, contrasena_usuario.getPassword().length));
-            MU.setCodId(Long.parseLong(cod_id.getText()));
-            MU.setMailuUsuario(mail_usuario.getText());
-            MU.setNomUsuario(nom_usuario.getText());
-            MU.setTelUsuario(Long.parseLong(tel_usuario.getText()));
-            MU.setDir(dir_usuario.getText());
+            MU.setNumeroDeDocumento(Long.parseLong(cod_id.getText()));
+            MU.setCorreo(mail_usuario.getText());
+            MU.setNombre(nom_usuario.getText());
+            MU.setTelefono(Long.parseLong(tel_usuario.getText()));
+            MU.setDireccion(dir_usuario.getText());
             ControladorUsuario CU = new ControladorUsuario(MU);
 
             int susses = CU.InsertarActualizar("Insert");

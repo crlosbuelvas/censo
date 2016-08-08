@@ -45,7 +45,7 @@ public class ControladorConductor {
         if(consulta.equals("SelectLote")){
             try{
                 preparedStatement = con.prepareStatement("SELECT * FROM public.conductores WHERE id_vehiculo = ?;");
-                preparedStatement.setLong(1, MC.getIdVehiculo());
+                preparedStatement.setLong(1, MC.getNCenso());
                 
                 resultSet = preparedStatement.executeQuery();
                 
@@ -53,17 +53,17 @@ public class ControladorConductor {
                     MCA[i] = new ModeloConductor();
                     if(resultSet.next()){
                         try{
-                            MCA[i].setApe1Con(resultSet.getString("ape1_con"));
+                            MCA[i].setApelllido1(resultSet.getString("ape1_con"));
                         }catch(NullPointerException e){
                             System.out.println(e.getMessage());
                         }
                         try{
-                            MCA[i].setApe2Con(resultSet.getString("ape2_con"));
+                            MCA[i].setApellido2(resultSet.getString("ape2_con"));
                         }catch(NullPointerException e){
                             System.out.println(e.getMessage());
                         }
                         try{
-                            MCA[i].setNomCon(resultSet.getString("nom_com"));
+                            MCA[i].setNombre(resultSet.getString("nom_com"));
                         }catch(NullPointerException e){
                             System.out.println(e.getMessage());
                         }
@@ -78,7 +78,7 @@ public class ControladorConductor {
                             System.out.println(e.getMessage());
                         }
                         try{
-                            MCA[i].setCodConductor(resultSet.getLong("cod_conductor"));
+                            MCA[i].setCedula(resultSet.getLong("cod_conductor"));
                         }catch(NullPointerException e){
                             System.out.println(e.getMessage());
                         }
@@ -98,7 +98,7 @@ public class ControladorConductor {
         if(consulta.equals("SelectForId")){
             try{
                 preparedStatement = con.prepareStatement("SELECT * FROM public.conductores WHERE id_vehiculo = ? AND id_conductor = ?;");
-                preparedStatement.setLong(1, MC.getIdVehiculo());
+                preparedStatement.setLong(1, MC.getNCenso());
                 preparedStatement.setLong(2, MC.getIdConductor());
                 
                 resultSet = preparedStatement.executeQuery();
@@ -108,17 +108,17 @@ public class ControladorConductor {
                     if(resultSet.next()){
                         
                         try{
-                            MCA[i].setApe1Con(resultSet.getString("ape1_con"));
+                            MCA[i].setApelllido1(resultSet.getString("ape1_con"));
                         }catch(NullPointerException e){
                             System.out.println(e.getMessage());
                         }
                         try{
-                            MCA[i].setApe2Con(resultSet.getString("ape2_con"));
+                            MCA[i].setApellido2(resultSet.getString("ape2_con"));
                         }catch(NullPointerException e){
                             System.out.println(e.getMessage());
                         }
                         try{
-                            MCA[i].setNomCon(resultSet.getString("nom_com"));
+                            MCA[i].setNombre(resultSet.getString("nom_com"));
                         }catch(NullPointerException e){
                             System.out.println(e.getMessage());
                         }
@@ -133,7 +133,7 @@ public class ControladorConductor {
                             System.out.println(e.getMessage());
                         }
                         try{
-                            MCA[i].setCodConductor(resultSet.getLong("cod_conductor"));
+                            MCA[i].setCedula(resultSet.getLong("cod_conductor"));
                         }catch(NullPointerException e){
                             System.out.println(e.getMessage());
                         }
@@ -173,18 +173,18 @@ public class ControladorConductor {
                 }else{
                     preparedStatement.setNull(1, java.sql.Types.BIGINT);
                 }
-                if(!MC.getApe1Con().equals("")){
-                    preparedStatement.setString(2, MC.getApe1Con());
+                if(!MC.getApellido1().equals("")){
+                    preparedStatement.setString(2, MC.getApellido1());
                 }else{
                     preparedStatement.setNull(2, java.sql.Types.VARCHAR);
                 }
-                if(!MC.getApe2Con().equals("")){
-                    preparedStatement.setString(3, MC.getApe2Con());
+                if(!MC.getApellido2().equals("")){
+                    preparedStatement.setString(3, MC.getApellido2());
                 }else{
                     preparedStatement.setNull(3, java.sql.Types.VARCHAR);
                 }
-                if(!MC.getNomCon().equals("")){
-                    preparedStatement.setString(4, MC.getNomCon());
+                if(!MC.getNombre().equals("")){
+                    preparedStatement.setString(4, MC.getNombre());
                 }else{
                     preparedStatement.setNull(4, java.sql.Types.VARCHAR);
                 }
@@ -193,8 +193,8 @@ public class ControladorConductor {
                 }else{
                     preparedStatement.setNull(5, java.sql.Types.VARCHAR);
                 }
-                if(MC.getIdVehiculo()!= 0){
-                    preparedStatement.setLong(6, MC.getIdVehiculo());
+                if(MC.getNCenso()!= 0){
+                    preparedStatement.setLong(6, MC.getNCenso());
                 }else{
                     preparedStatement.setNull(6, java.sql.Types.BIGINT);
                 }

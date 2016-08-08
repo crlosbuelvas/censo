@@ -5,7 +5,7 @@
  */
 package censo.views;
 
-import censo.modelos.ModeloPoseedor;
+import censo.modelos.ModeloPersona;
 import javax.swing.JOptionPane;
 
 /**
@@ -265,34 +265,34 @@ public class Poseedor extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_ape1_proActionPerformed
     
-    public ModeloPoseedor getModelo(){
+    public ModeloPersona getModelo(){
         if(!nom_pro.equals("") && !ape1_pro.equals("") && !ape2_pro.equals("") &&
                 !ciudad_pro.equals("") && !dir_pro.equals("") && !escolaridad_pro.equals("") && 
                 !estado_civil.equals("") && !estrato_pro.equals("") && !id_propietario.equals("") && 
                 !n_hijos.equals("") && !nacimiento_pro.equals("") && !personas_cargo.equals("") && 
                 !profecion_pro.equals("") && !tipo_id.equals("")){
             try{
-                ModeloPoseedor MP = new ModeloPoseedor();
-                MP.setNomPos(nom_pro.getText());
-                MP.setApe1Pos(ape1_pro.getText());
-                MP.setApe2Pos(ape2_pro.getText());
-                MP.setCiudadPos(ciudad_pro.getText());
-                MP.setDirPos(dir_pro.getText());
-                MP.setEscolaridadPos(escolaridad_pro.getText());
+                ModeloPersona MP = new ModeloPersona();
+                MP.setNombre(nom_pro.getText());
+                MP.setApellido1(ape1_pro.getText());
+                MP.setApellido2(ape2_pro.getText());
+                MP.setCiudad(ciudad_pro.getText());
+                MP.setDireccion(dir_pro.getText());
+                MP.setEscolaridad(escolaridad_pro.getText());
                 MP.setEstadoCivil(estado_civil.getText());
-                MP.setEstratoPos(Integer.parseInt(estrato_pro.getText()));
-                MP.setTipoId(Long.parseLong(id_propietario.getText()));
+                MP.setEstratoPro(Integer.parseInt(estrato_pro.getText()));
+                MP.setNumeroDeDocumento(Long.parseLong(id_propietario.getText()));
                 if(Licencia1.isSelected()){
                     MP.setLicencia("si");
                 }else{
                     MP.setLicencia("no");
                 }
-                MP.setNHijos(Integer.parseInt(n_hijos.getText()));
-                MP.setNacimientoPos(nacimiento_pro.getText());
+                MP.setNumeroDeHijos(Integer.parseInt(n_hijos.getText()));
+                MP.setNacimiento(nacimiento_pro.getText());
                 MP.setPersonasCargo(Integer.parseInt(personas_cargo.getText()));
-                MP.setProfecionPos(profecion_pro.getText());
-                MP.setSaludPos(String.valueOf(salud_pro.getSelectedItem()));
-                MP.setSexoPos(String.valueOf(String.valueOf(sexo_pro.getSelectedItem())).substring(0, 1));
+                MP.setProfecion(profecion_pro.getText());
+                MP.setSalud(String.valueOf(salud_pro.getSelectedItem()));
+                MP.setSexo(String.valueOf(String.valueOf(sexo_pro.getSelectedItem())).substring(0, 1));
                 MP.setTipoDocumento(tipo_id.getText());
                 
                 return MP;
@@ -303,16 +303,16 @@ public class Poseedor extends javax.swing.JPanel {
         return null;
     }
     
-    public void setModelo(ModeloPoseedor MP){
-        nom_pro.setText(MP.getNomPos());
-        ape1_pro.setText(MP.getApe1Pos());
-        ape2_pro.setText(MP.getApe2Pos());
-        ciudad_pro.setText(MP.getCiudadPos());
-        dir_pro.setText(MP.getDirPos());
-        escolaridad_pro.setText(MP.getEscolaridadPos());
+    public void setModelo(ModeloPersona MP){
+        nom_pro.setText(MP.getNom());
+        ape1_pro.setText(MP.getApellido1());
+        ape2_pro.setText(MP.getApellido2());
+        ciudad_pro.setText(MP.getCiudad());
+        dir_pro.setText(MP.getDireccion());
+        escolaridad_pro.setText(MP.getEscolaridad());
         estado_civil.setText(MP.getEstadoCivil());
-        estrato_pro.setText(String.valueOf(MP.getEstratoPos()));
-        id_propietario.setText(String.valueOf(MP.getTipoId()));
+        estrato_pro.setText(String.valueOf(MP.getEstrato()));
+        id_propietario.setText(String.valueOf(MP.getNumeroDeDocumento()));
         if(MP.getLicencia().equals("SI")){
             Licencia1.setSelected(true);
             licencia2.setSelected(false);
@@ -320,14 +320,14 @@ public class Poseedor extends javax.swing.JPanel {
             Licencia1.setSelected(false);
             licencia2.setSelected(true);
         }
-        n_hijos.setText(String.valueOf(MP.getNHijos()));
-        nacimiento_pro.setText(MP.getNacimientoPos());
+        n_hijos.setText(String.valueOf(MP.getNumeroHijos()));
+        nacimiento_pro.setText(MP.getNacimiento());
         personas_cargo.setText(String.valueOf(MP.getPersonasCargo()));
-        profecion_pro.setText(MP.getProfecionPos());
-        salud_pro.setSelectedItem(MP.getSaludPos());
-        if(MP.getSexoPos().equals("M")){
+        profecion_pro.setText(MP.getProfecion());
+        salud_pro.setSelectedItem(MP.getSalud());
+        if(MP.getSexo().equals("M")){
             sexo_pro.setSelectedItem("Masculino");
-        } else if (MP.getSexoPos().equals("F")) {
+        } else if (MP.getSexo().equals("F")) {
             sexo_pro.setSelectedItem("Femenino");
         } else {
             sexo_pro.setSelectedItem("Otros");
